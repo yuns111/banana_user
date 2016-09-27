@@ -13,7 +13,6 @@ public class ProgramController {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.110:1521:xe", "system", "1234");
-
 			System.out.println("데이터베이스가 연결되었습니다.");
 		} catch(ClassNotFoundException e){
 
