@@ -1,7 +1,7 @@
 package banana_user.controller;
 
-
 public class Controllers {
+<<<<<<< HEAD
 	
 	private static ProgramController programController;
 	private static LoginController loginController;
@@ -23,4 +23,3 @@ public class Controllers {
 		return loginController;
 	}
 	
-}
