@@ -7,11 +7,4 @@ public class AlertView {
 		System.out.println("[알림] " + message);
 
 	}
-
-	public void alert(String message) {
-
-		System.out.println("[알림] " + message);
-
-	}
-
 }
