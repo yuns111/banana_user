@@ -4,10 +4,12 @@ package banana_user.controller;
 public class Controllers {
 	
 	private static ProgramController programController;
+	private static LoginController loginController;
 	
 	public Controllers() {
 		
 		programController = new ProgramController();
+		loginController = new LoginController();
 		
 	}
 
@@ -17,5 +19,8 @@ public class Controllers {
 
 	}
 
-
+	public static LoginController getLoginController() {
+		return loginController;
+	}
+	
 }

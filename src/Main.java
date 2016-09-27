@@ -1,8 +1,14 @@
+import banana_user.controller.Controllers;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		new Controllers();
+		Controllers.getLoginController().requestLogin();
+		Controllers.getLoginController().requestLoginYN();
+		Controllers.getLoginController().requestLogout();
+		Controllers.getLoginController().requestLoginYN();
 
 	}
 
