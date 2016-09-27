@@ -21,4 +21,5 @@ public class Controllers {
 	public static LoginController getLoginController() {
 		return loginController;
 	}
+}
 	

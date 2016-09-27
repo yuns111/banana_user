@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ProgramController {
-	
+
 	private Connection connection;
 
 	public ProgramController() {
@@ -13,26 +13,18 @@ public class ProgramController {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.110:1521:xe", "system", "1234");
-			
-			System.out.println("데이터베이스가 연결되었습니다.");
-		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩에 실패했습니다.");
-			e.printStackTrace();
-		} catch (SQLException e) {
-			System.out.println("데이터베이스 연결에 실패했습니다.");
-			e.printStackTrace();
-		}
 
+			System.out.println("데이터베이스가 연결되었습니다.");
 		} catch(ClassNotFoundException e){
 
 			System.out.println("클래스 파일 없음");
 		}
 		catch(SQLException e){
-			
+
 			System.out.println("커넥션 에러");
 		}
 	}
-	
+
 	public Connection getConnection() {
 
 		return connection;
