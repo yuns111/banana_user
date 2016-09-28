@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 import banana_user.domain.Music;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 import banana_user.controller.Controllers;
 
 public class MusicSelectView {
@@ -14,6 +18,18 @@ public class MusicSelectView {
 	public MusicSelectView() {
 
 		keyboard = new Scanner(System.in);
+<<<<<<< HEAD
+=======
+	}
+	
+	public void musicSelectOneView(){
+		
+		System.out.print("음원번호로 선택해주세요 : ");
+		int musicNumber = keyboard.nextInt();
+		
+		Controllers.getMusicController().requestMusicSelectOne(musicNumber);
+		
+>>>>>>> refs/remotes/origin/master
 	}
 
 	public void musicSelectAll(ArrayList<Music> musicList) {
@@ -32,6 +48,7 @@ public class MusicSelectView {
 			}
 		}
 	}
+<<<<<<< HEAD
 	public void musicSelectOneView(){
 
 		System.out.print("음원번호로 선택해주세요 : ");
@@ -40,5 +57,8 @@ public class MusicSelectView {
 		Controllers.getMusicController().requestMusicSelectOne(musicNumber);
 
 	}
+=======
+
+>>>>>>> refs/remotes/origin/master
 
 }

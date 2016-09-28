@@ -3,8 +3,13 @@ package banana_user.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
 import java.time.LocalDate;
 import java.util.ArrayList;
+=======
+import java.util.ArrayList;
+import java.util.ResourceBundle.Control;
+>>>>>>> refs/remotes/origin/master
 
 import banana_user.controller.Controllers;
 import banana_user.domain.Music;
@@ -13,7 +18,10 @@ import banana_user.repository.LoginRepository;
 public class MusicDao {
 
 	public MusicDao() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 	}
 
 	//음원 목록
@@ -35,6 +43,7 @@ public class MusicDao {
 				music.setSinger(rs.getString("singer"));
 				music.setLyrics(rs.getString("lyrics"));
 				musicList.add(music);
+<<<<<<< HEAD
 			}
 		} catch (SQLException e){
 
@@ -45,10 +54,25 @@ public class MusicDao {
 			}
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+=======
+			}	
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			} if(stmt != null) {
+				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+>>>>>>> refs/remotes/origin/master
 			}
 		}
 
 		return musicList;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/master
 	}
 
 	public Music selectOneMusic(int musicNumber){
@@ -91,6 +115,7 @@ public class MusicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+<<<<<<< HEAD
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 			} if(stmt != null) {
@@ -149,6 +174,11 @@ public class MusicDao {
 				} if(stmt != null) {
 					try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 				}
+=======
+
+			if(stmt != null) {
+				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+>>>>>>> refs/remotes/origin/master
 			}
 		}
 
@@ -183,7 +213,11 @@ public class MusicDao {
 			e.printStackTrace();
 		}
 
+<<<<<<< HEAD
 		return success;
+=======
+		return selectedMusic;
+>>>>>>> refs/remotes/origin/master
 	}
 
 }

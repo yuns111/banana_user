@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import banana_user.dao.MusicDao;
 import banana_user.domain.Music;
 import banana_user.view.AlertView;
+<<<<<<< HEAD
 import banana_user.view.MusicPlayingView;
+=======
+>>>>>>> refs/remotes/origin/master
 import banana_user.view.MusicSelectView;
 
 public class MusicController {
