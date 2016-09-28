@@ -6,7 +6,12 @@ public class Main {
 		
 		new Controllers();
 
+<<<<<<< HEAD
 		Controllers.getUserController().requestRegisterUser();
+=======
+
+		Controllers.getMusicController().requestSelectAllMusic();
+>>>>>>> refs/remotes/yuns111/master
 	}
 
 }
