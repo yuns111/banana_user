@@ -14,7 +14,7 @@ public class LoginDao {
 		loginRepository = new LoginRepository();
 	}
 
-	public boolean insert(Login login){
+	public boolean insert(Login login) {
 
 		boolean success = false;
 		String userPassword = null;
@@ -28,22 +28,22 @@ public class LoginDao {
 			pstmt.setString(1, login.getLoginId());
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
+			while(rs.next()) {
 				userPassword =rs.getString(1);
 			}
 
-			if(userPassword.equals(login.getLoginPassword())){
+			if(userPassword.equals(login.getLoginPassword())) {
 				//맞으면 repository에 넣기
 				success = true;
 				LoginRepository.getLogin().setLoginId(login.getLoginId());
 				LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
 			}
 
-		} catch(SQLException e){
+		} catch(SQLException e) {
 
 			System.out.println("SQL문장이 잘못되었습니다.");	
 
-		} finally{
+		} finally {
 
 			try {
 				rs.close(); 
