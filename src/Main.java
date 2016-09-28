@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		new Controllers();
-		Controllers.getTicketController().requestTicketAllList();
+		Controllers.getUserController().requestRegisterUser();
 	
 	}
 

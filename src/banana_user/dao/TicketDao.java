@@ -123,7 +123,7 @@ public class TicketDao {
 			//구매한 이력 체크 후 insert
 			sql = "select * from PURCHASETICKET where usernumber =? and enddate >= sysdate";
 			pstmt=Controllers.getProgramController().getConnection().prepareStatement(sql);	
-			pstmt.setInt(1, 1); //로그인이랑 합치기
+			pstmt.setInt(1, 21); //로그인이랑 합치기
 			rs = pstmt.executeQuery();
 
 			if(!(rs.next())){
@@ -131,7 +131,7 @@ public class TicketDao {
 				sql = "insert into purchaseTicket values(?,?,?,?,?,?)";
 				pstmt=Controllers.getProgramController().getConnection().prepareStatement(sql);			
 				pstmt.setInt(1,maxPurchaseNumber);
-				pstmt.setInt(2,1); //로그인이랑 합치기
+				pstmt.setInt(2,21); //로그인이랑 합치기
 				pstmt.setInt(3, ticketBuyNum);
 				pstmt.setString(4,startDate); 
 				pstmt.setString(5,endDate);
