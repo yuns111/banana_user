@@ -6,25 +6,23 @@ public class Controllers {
 	private static UserController userController;
 	private static LoginController loginController;
 	private static EmotionController emotionController;
-	
+	private static TicketController ticketController;
+
 	public Controllers() {
 
 		programController = new ProgramController();
 		userController = new UserController();
 		loginController = new LoginController();
 		emotionController = new EmotionController();
+		ticketController = new TicketController();
 	}
 
 	public static ProgramController getProgramController() {
-
 		return programController;
-
 	}
 
 	public static UserController getUserController() {
-
 		return userController;
-
 	}
 
 	public static LoginController getLoginController() {
@@ -34,5 +32,9 @@ public class Controllers {
 	public static EmotionController getEmotionController() {
 		return emotionController;
 	}
-	
+
+	public static TicketController getTicketController() {
+		return ticketController;
+	}
+
 }
