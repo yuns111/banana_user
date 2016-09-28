@@ -6,6 +6,7 @@ public class Controllers {
 	private static UserController userController;
 	private static LoginController loginController;
 	private static EmotionController emotionController;
+	private static MusicController musicController;
 	
 	public Controllers() {
 
@@ -13,26 +14,33 @@ public class Controllers {
 		userController = new UserController();
 		loginController = new LoginController();
 		emotionController = new EmotionController();
+		musicController = new MusicController();
 	}
 
 	public static ProgramController getProgramController() {
 
 		return programController;
-
 	}
 
 	public static UserController getUserController() {
 
 		return userController;
-
 	}
 
 	public static LoginController getLoginController() {
+		
 		return loginController;
 	}
 
 	public static EmotionController getEmotionController() {
+		
 		return emotionController;
 	}
+
+	public static MusicController getMusicController() {
+		
+		return musicController;
+	}
+	
 	
 }
