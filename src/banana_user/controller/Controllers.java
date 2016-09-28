@@ -8,6 +8,8 @@ public class Controllers {
 	private static EmotionController emotionController;
 	private static MusicController musicController;
 	
+	private static TicketController ticketController;
+
 	public Controllers() {
 
 		programController = new ProgramController();
@@ -16,15 +18,14 @@ public class Controllers {
 
 		emotionController = new EmotionController();
 		musicController = new MusicController();
+		ticketController = new TicketController();
 	}
 
 	public static ProgramController getProgramController() {
-
 		return programController;
 	}
 
 	public static UserController getUserController() {
-
 		return userController;
 	}
 
@@ -44,4 +45,8 @@ public class Controllers {
 	}
 	
 	
+	public static TicketController getTicketController() {
+		return ticketController;
+	}
+
 }
