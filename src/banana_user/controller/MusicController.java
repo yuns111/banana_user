@@ -1,6 +1,10 @@
 package banana_user.controller;
 
+import java.util.ArrayList;
+
 import banana_user.dao.MusicDao;
+import banana_user.domain.Music;
+import banana_user.view.MusicSelectView;
 
 public class MusicController {
 	
@@ -11,6 +15,14 @@ public class MusicController {
 	}
 	
 	//음원목록출력
+	public void requestSelectAllMusic() {
+		
+		ArrayList<Music> musicList = musicDao.musicSelectAll();
+		
+		MusicSelectView musicSelectView = new MusicSelectView();
+		musicSelectView.musicSelectAll(musicList);
+	}
+	
 	
 	//음원선택
 	
