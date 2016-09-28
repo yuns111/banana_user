@@ -13,12 +13,9 @@ public class Controllers {
 		programController = new ProgramController();
 		userController = new UserController();
 		loginController = new LoginController();
-<<<<<<< HEAD
 
-=======
 		emotionController = new EmotionController();
 		musicController = new MusicController();
->>>>>>> refs/remotes/yuns111/master
 	}
 
 	public static ProgramController getProgramController() {
