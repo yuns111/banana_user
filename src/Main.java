@@ -6,11 +6,8 @@ public class Main {
 		
 		new Controllers();
 
-		Controllers.getLoginController().requestLogin();
-		Controllers.getLoginController().requestLoginYN();
-		Controllers.getLoginController().requestLogout();
-		Controllers.getLoginController().requestLoginYN();
 
+		Controllers.getMusicController().requestSelectAllMusic();
 	}
 
 }

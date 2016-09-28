@@ -3,11 +3,12 @@ package banana_user.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.ResourceBundle.Control;
 
 import banana_user.controller.Controllers;
 import banana_user.domain.Music;
+import banana_user.repository.LoginRepository;
 
 public class MusicDao {
 
@@ -23,7 +24,7 @@ public class MusicDao {
 
 		try {
 			stmt = Controllers.getProgramController().getConnection().createStatement();
-			String sql = "select musicNumber, title, singer, lyrics from music";
+			String sql = "select musicNumber, title, singer, lyrics from music order by playingCount desc";
 			rs = stmt.executeQuery(sql);
 
 			while(rs.next()) {
@@ -33,20 +34,20 @@ public class MusicDao {
 				music.setSinger(rs.getString("singer"));
 				music.setLyrics(rs.getString("lyrics"));
 				musicList.add(music);
-			}	
-		}catch (SQLException e) {
-			e.printStackTrace();
+			}
+		} catch (SQLException e){
+
 		} finally {
-			if(rs != null) {
-				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-			} if(stmt != null) {
+
+			if(stmt != null) {
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}	
 		}
 
 		return musicList;
-
-
 	}
 
 	public Music selectOneMusic(int musicNumber){
@@ -89,16 +90,107 @@ public class MusicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-
-			if(stmt != null) {
-				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			}
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			} if(stmt != null) {
+				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
 		}
 
 		return selectedMusic;
+	}
+
+	public int playMusic(Music selectedMusic){
+
+		int success = 0;
+		//0:비로그인상태  1:이용권구매안하거나 기간만료 2:이용권 유
+		int userNumber=0;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String endDate = null;
+
+		//재생하면 재생카운트 증가
+		try {
+
+			String sql = "update Music set PlayingCount = " + (selectedMusic.getPlayingCount() + 1)
+					+" where musicNumber = " + selectedMusic.getMusicNumber();
+			stmt = Controllers.getProgramController().getConnection().createStatement();
+
+			stmt.executeUpdate(sql);
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+
+		if(LoginRepository.getLogin().getLoginId() == null){
+
+			return success;
+
+		} else {
+
+			try {
+				String sql = "select userNumber from banana_user where userId = '"
+						+LoginRepository.getLogin().getLoginId()+"'";
+				stmt = Controllers.getProgramController().getConnection().createStatement();
+
+				rs = stmt.executeQuery(sql);
+				if(rs.next()){
+					userNumber = rs.getInt(1);
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+
+			}  finally {
+				if(rs != null) {
+					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				} if(stmt != null) {
+					try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				}
+
+			}
+
+			try {
+				String sql = "select max(endDate) from purchaseTicket where userNumber = " + userNumber;
+				stmt = Controllers.getProgramController().getConnection().createStatement();
+
+				rs = stmt.executeQuery(sql);
+
+				if(rs.next()) {
+
+					endDate = rs.getString(1);
+
+					if(rs.getString(1) == null){
+
+						success = 1;
+
+					}  else	{
+
+						LocalDate end = LocalDate.parse(endDate);
+						LocalDate currentDate = LocalDate.now();
+
+						if(end.isAfter(currentDate)){
+
+							success = 2;
+						}
+					}
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}  finally {
+				if(rs != null) {
+					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				} if(stmt != null) {
+					try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				}
+
+			}
+		}
+
+		return success;
 	}
 
 }
