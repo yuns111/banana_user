@@ -11,7 +11,10 @@ public class Main {
 		Controllers.getLoginController().requestLogout();
 		Controllers.getLoginController().requestLoginYN();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/yuns111/master
 	}
 
 }
