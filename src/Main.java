@@ -6,11 +6,14 @@ public class Main {
 		
 		new Controllers();
 
-		Controllers.getLoginController().requestLogin();
-		Controllers.getLoginController().requestLoginYN();
-		Controllers.getLoginController().requestLogout();
-		Controllers.getLoginController().requestLoginYN();
+<<<<<<< HEAD
+		Controllers.getUserController().requestRegisterUser();
+		Controllers.getMusicController().requestSelectAllMusic();
 
+=======
+		Controllers.getMusicController().requestSelectAllMusic();
+		Controllers.getUserController().requestRegisterUser();
+>>>>>>> refs/remotes/yuns111/master
 	}
 
 }
