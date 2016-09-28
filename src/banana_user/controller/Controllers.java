@@ -11,10 +11,7 @@ public class Controllers {
 		programController = new ProgramController();
 		userController = new UserController();
 		loginController = new LoginController();
-<<<<<<< HEAD
-		
-=======
->>>>>>> refs/remotes/yuns111/master
+
 	}
 
 	public static ProgramController getProgramController() {
@@ -29,10 +26,6 @@ public class Controllers {
 
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/yuns111/master
 	public static LoginController getLoginController() {
 		return loginController;
 	}
