@@ -4,10 +4,7 @@ import java.util.ArrayList;
 
 import banana_user.dao.MusicDao;
 import banana_user.domain.Music;
-<<<<<<< HEAD
-=======
 import banana_user.view.AlertView;
->>>>>>> refs/remotes/origin/musicSelect
 import banana_user.view.MusicSelectView;
 
 public class MusicController {
