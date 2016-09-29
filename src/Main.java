@@ -6,11 +6,8 @@ public class Main {
 		
 		new Controllers();
 
-		Controllers.getUserController().requestRegisterUser();
 		Controllers.getMusicController().requestSelectAllMusic();
-		Controllers.getMusicController().requestSelectAllMusic();
-		Controllers.getUserController().requestRegisterUser();
-		
+
 	}
 
 }
