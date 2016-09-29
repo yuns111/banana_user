@@ -10,6 +10,18 @@ public class Music {
 	private int emotionNumber;
 	private int playingCount;
 	
+	
+	
+	public Music() {
+	}
+
+	public Music(int musicNumber, String title, String singer) {
+		
+		this.musicNumber = musicNumber;
+		this.title = title;
+		this.singer = singer;		
+	}
+	
 	//getter setter
 	public int getMusicNumber() {
 		return musicNumber;

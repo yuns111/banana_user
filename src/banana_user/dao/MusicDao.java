@@ -3,6 +3,7 @@ package banana_user.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -150,11 +151,17 @@ public class MusicDao {
 				}
 
 				//로그인상태의 유저의 플레이리스트로 들어감
-				String sql2 = "insert into playList values(?,?)";
-				pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql2);
-				pstmt.setInt(1, selectedMusic.getMusicNumber());
-				pstmt.setInt(2, userNumber);
-				pstmt.executeUpdate();
+				try {
+					String sql2 = "insert into playList values(?,?)";
+					pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql2);
+					pstmt.setInt(1, selectedMusic.getMusicNumber());
+					pstmt.setInt(2, userNumber);
+					pstmt.executeUpdate();
+					
+				} catch (SQLIntegrityConstraintViolationException e) {
+					System.out.println("플레이리스트에서 존재하는 곡을 재생합니다.");
+				}
+				
 
 
 			} catch (SQLException e) {
