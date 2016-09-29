@@ -34,6 +34,7 @@ public class MusicSelectView {
 			new AlertView().alert("음원이 없습니다.");
 		} else {
 			System.out.println("순위\t음원번호\t노래제목\t\t가수");	
+			
 			for(int i = 0; i < musicList.size(); i++) {
 				System.out.print(i+1+"\t");
 				System.out.print(musicList.get(i).getMusicNumber() + "\t");
@@ -41,7 +42,6 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 			}
 		}
-		
 	}
 	
 	//노래 재생전 나오는 음원 목록
