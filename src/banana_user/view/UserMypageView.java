@@ -26,6 +26,7 @@ public class UserMypageView {
 		System.out.print(user.getUserName() + "\t");
 		System.out.print(user.getUserPhoneNumber() + "\t\t");
 		System.out.println(user.getTicketName());
+		
 
 		Controllers.getUserController().requestUserMypageSub();
 
@@ -35,9 +36,7 @@ public class UserMypageView {
 
 		while(true) {
 
-			//Controllers.getLoginController().requestCheckLogin();
-
-			System.out.print("[1]회원정보수정  [2]이용권 구매정보 [3]회원탈퇴 [0]프로그램 종료] : ");
+			System.out.print("\n[1.회원정보수정  2.이용권 구매정보  3.회원탈퇴  9.메인메뉴  0.프로그램 종료] : ");
 
 			int selectedMenu = keyboard.nextInt();
 
@@ -46,15 +45,19 @@ public class UserMypageView {
 				Controllers.getUserController().requestUpdateUser();
 				break;
 			case 2:
-				//Controllers..
+				Controllers.getTicketController().requestPurchaseTicketAll();
+				break;
 			case 3:
 				Controllers.getUserController().requestDeleteUser();
+				break;
+			case 9:
+				Controllers.getMenuController().requestShowMenu();
 				break;
 			case 0:
 				Controllers.getProgramController().requestExitProgram();
 				break;
 			default:
-				new AlertView().alert("메뉴를 다시 선택해 주세요.");
+				System.out.println("메뉴를 다시 선택해 주세요.");
 			}
 		}
 

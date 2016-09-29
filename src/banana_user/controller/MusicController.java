@@ -30,8 +30,7 @@ public class MusicController {
 	public void requestCallMusicSelectOneView(){
 		
 		//하나 선택 입력받을 뷰(0입력시 재생안함)
-		MusicSelectView selectOne = new MusicSelectView();
-		
+		MusicSelectView selectOne = new MusicSelectView();		
 		selectOne.musicSelectOneView();
 		
 	}
@@ -41,8 +40,9 @@ public class MusicController {
 		//dao에서 선택한 음원 정보 추출
 		Music selectedMusic = musicDao.selectOneMusic(musicNumber);
 		
-		if(selectedMusic.getMusicNumber() == 0){
-			//메뉴로 돌아가기
+		if(selectedMusic.getMusicNumber() == 0) {
+			
+			Controllers.getMenuController().requestShowMenu();
 			
 		} else if(selectedMusic.getMusicNumber() < 0) {
 			
@@ -75,6 +75,8 @@ public class MusicController {
 			
 			playView.musicPlaying(selectedMusic);
 		}
+		
+		Controllers.getMenuController().requestShowMenu();
 	}
 
 }
