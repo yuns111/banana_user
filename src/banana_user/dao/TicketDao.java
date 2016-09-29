@@ -41,15 +41,16 @@ public class TicketDao {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally{
+			
+			System.out.println("모든 티켓 조회중 예외가 발생했습니다.");
+			
+		} finally {
+			
 			if(rs != null) {
-				try{
-					rs.close();
-					pstmt.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			if(pstmt != null) {
+				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
 
 		}
@@ -59,6 +60,7 @@ public class TicketDao {
 	}
 
 
+	//티켓 구매
 	public boolean buyOneTicket(int ticketBuyNum){
 
 		String sql = null;
@@ -122,8 +124,8 @@ public class TicketDao {
 
 			//구매한 이력 체크 후 insert
 			sql = "select * from PURCHASETICKET where usernumber =? and enddate >= sysdate";
-			pstmt=Controllers.getProgramController().getConnection().prepareStatement(sql);	
-			pstmt.setInt(1, 21); //로그인이랑 합치기
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);	
+			pstmt.setInt(1, userNumber); //로그인이랑 합치기
 			rs = pstmt.executeQuery();
 
 			if(!(rs.next())){
@@ -131,7 +133,7 @@ public class TicketDao {
 				sql = "insert into purchaseTicket values(?,?,?,?,?,?)";
 				pstmt=Controllers.getProgramController().getConnection().prepareStatement(sql);			
 				pstmt.setInt(1,maxPurchaseNumber);
-				pstmt.setInt(2,21); //로그인이랑 합치기
+				pstmt.setInt(2,userNumber); //로그인이랑 합치기
 				pstmt.setInt(3, ticketBuyNum);
 				pstmt.setString(4,startDate); 
 				pstmt.setString(5,endDate);
@@ -144,9 +146,53 @@ public class TicketDao {
 			}
 
 		} catch(SQLException e){
-			System.out.println("SQL문장 에러 발생");
-		}
+			System.out.println("티켓 구매 중 예외가 발생하였습니다.");
+		} 
 
 		return success;
+	}
+
+	public ArrayList<Ticket> purchaseTicketAll() {
+
+		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+		String sql = null;
+		PreparedStatement pstmt  = null;
+		ResultSet rs = null;
+		int userNumber = 0;
+
+		try{
+
+			sql = "select usernumber from banana_user where userId = ?";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setString(1, LoginRepository.getLogin().getLoginId());
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				
+				userNumber = rs.getInt(1);
+				
+			}
+
+			sql = "select ticketname, t.price, startdate, enddate from ticket t, purchaseticket p where t.TICKETNUMBER = p.TICKETNUMBER and p.USERNUMBER = ? order by purchasenumber desc";
+			pstmt=Controllers.getProgramController().getConnection().prepareStatement(sql);	
+			pstmt.setInt(1,userNumber);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				String ticketName = rs.getString(1);
+				int price = rs.getInt(2);
+				String startDate = rs.getString(3);
+				String endDate = rs.getString(4);
+				Ticket ticket = new Ticket(ticketName, price, startDate, endDate);
+				tickets.add(ticket);	
+								
+			}
+
+		} catch(SQLException e){
+			System.out.println("구매 티켓 이력 조회 중 예외가 발생하였습니다.");
+		}
+
+		return tickets;
 	}
 }
