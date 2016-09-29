@@ -30,13 +30,13 @@ public class LoginDao {
 
 			while(rs.next()) {
 				userPassword =rs.getString(1);
-			}
 
-			if(userPassword.equals(login.getLoginPassword())) {
-				//맞으면 repository에 넣기
-				success = true;
-				LoginRepository.getLogin().setLoginId(login.getLoginId());
-				LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+				if(userPassword.equals(login.getLoginPassword())) {
+					//맞으면 repository에 넣기
+					success = true;
+					LoginRepository.getLogin().setLoginId(login.getLoginId());
+					LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+				}
 			}
 
 		} catch(SQLException e) {
@@ -64,18 +64,18 @@ public class LoginDao {
 		success = true;
 		return success;
 	}
-	
-	
+
+
 	public boolean select(){
-		
+
 		boolean success = false;
-		
+
 		if(loginRepository.getLogin().getLoginId() != null){
 			success = true;
 		}
-		
+
 		return success;
-		
+
 	}
 
 

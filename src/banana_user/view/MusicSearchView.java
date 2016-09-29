@@ -31,6 +31,7 @@ public class MusicSearchView {
 
 		if(searchMusicList.size() == 0) {
 			new AlertView().alert("음원이 없습니다.");
+			Controllers.getMusicController().requestSearchMusic();
 		} else {
 			System.out.println("음원번호\t노래제목\t\t가수");	
 			for(int i = 0; i < searchMusicList.size(); i++) {
@@ -39,7 +40,7 @@ public class MusicSearchView {
 				System.out.println(searchMusicList.get(i).getSinger());
 			}
 		}
-		Controllers.getMusicController().requestCallMusicSelectOneView();
+		Controllers.getMusicController().requestCallMusicSelectOneView(searchMusicList);
 	}
 	
 }
