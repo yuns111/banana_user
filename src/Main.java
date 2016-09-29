@@ -8,11 +8,7 @@ public class Main {
 		Controllers.getMusicController().requestSelectAllMusic();
 		Controllers.getUserController().requestRegisterUser();
 		Controllers.getMenuController().requestShowMenu();
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> refs/remotes/origin/my
 	}
 
 }
