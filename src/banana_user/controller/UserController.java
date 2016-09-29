@@ -37,6 +37,8 @@ public class UserController {
 		} else {
 			alertView.alert("중복된 id가 존재합니다.");
 		}
+		
+		Controllers.getMenuController().requestShowMenu();
 
 	}
 
@@ -83,9 +85,10 @@ public class UserController {
 
 	//회원정보 보기 요청을 처리하는 메서드
 	public void requestUserMypage() {
-
-		UserMypageView userMypageView = new UserMypageView();
+	
 		User user = userDao.mypageUserInfo();
+		
+		UserMypageView userMypageView = new UserMypageView();
 		userMypageView.userMypage(user);
 		
 	}

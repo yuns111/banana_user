@@ -7,6 +7,7 @@ public class Controllers {
 	private static LoginController loginController;
 	private static EmotionController emotionController;
 	private static MusicController musicController;
+	private static MenuController menuController;
 	
 	private static TicketController ticketController;
 
@@ -19,6 +20,7 @@ public class Controllers {
 		emotionController = new EmotionController();
 		musicController = new MusicController();
 		ticketController = new TicketController();
+		menuController = new MenuController();
 	}
 
 	public static ProgramController getProgramController() {
@@ -48,5 +50,9 @@ public class Controllers {
 	public static TicketController getTicketController() {
 		return ticketController;
 	}
+
+	public static MenuController getMenuController() {
+		return menuController;
+	}	
 
 }

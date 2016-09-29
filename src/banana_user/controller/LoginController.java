@@ -34,6 +34,8 @@ public class LoginController {
 			alertView.alert("id 또는 password가 틀렸습니다.");
 			Controllers.getLoginController().requestLogin();
 		}
+		
+		Controllers.getMenuController().requestShowMenu();
 
 	}
 
@@ -49,17 +51,19 @@ public class LoginController {
 	}
 
 	//로그인체크여부
-	public void requestLoginYN(){
+	public boolean requestLoginYN(){
 		
 		boolean success = loginDao.select();
-		AlertView alertView = new AlertView();
+		return success;
+		
+		/*AlertView alertView = new AlertView();
 
 		if(success){
 			alertView.alert("로그인한 사용자가 있습니다.");
 		} else{
 			alertView.alert("로그인한 사용자가 없습니다.");
 		}
-		
+		*/
 	}
 
 	//로그인 한 사용자조회

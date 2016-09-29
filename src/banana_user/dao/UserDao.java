@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import banana_user.controller.Controllers;
 import banana_user.domain.User;
+import banana_user.repository.LoginRepository;
 import banana_user.view.AlertView;
 
 public class UserDao {
@@ -123,7 +124,7 @@ public class UserDao {
 
 			String sql = "delete from banana_user where userId = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
-			//pstmt.setString(1, LoginRepository.getLogin().getLoginId());
+			pstmt.setString(1, LoginRepository.getLogin().getLoginId());
 
 			result = pstmt.executeUpdate();
 
@@ -148,23 +149,31 @@ public class UserDao {
 
 	}
 
+	//마이페이지
 	public User mypageUserInfo() {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		User user = new User();
+		int userNumber = 0;
 
 		try {
 
-			String sql = "select b.usernumber,userid,username,userphonenumber,t.ticketname "
-					+ "from banana_user b, purchaseticket p, ticket t"
-					+ "where p.ticketnumber = t.ticketnumber"
-					+ "and p.USERNUMBER = b.USERNUMBER"
-					+ "and p.usernumber = ?";
-			
+			String sql = "select usernumber from banana_user where userId = ?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setString(1, LoginRepository.getLogin().getLoginId());
+			rs = pstmt.executeQuery();
 
-			//pstmt.setString(1, LoginRepository.getLogin().getLoginId());
+			while(rs.next()) {
+				userNumber = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+			
+			sql = "select usernumber, userid, username, userphonenumber from banana_user where usernumber = ?";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setInt(1, userNumber);
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
@@ -172,7 +181,17 @@ public class UserDao {
 				user.setUserId(rs.getString(2));
 				user.setUserName(rs.getString(3));
 				user.setUserPhoneNumber(rs.getString(4));
-				user.setTicketName(rs.getString(5));
+			}
+			
+			sql = "select t.TICKETNAME from purchaseticket p, ticket t where PURCHASENUMBER= (select max(PURCHASENUMBER) from purchaseticket  where usernumber =?) and p.ticketnumber = t.ticketnumber";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setInt(1, userNumber);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {				
+				user.setTicketName(rs.getString(1));
+			} else{
+				user.setTicketName("없음");
 			}
 
 		} catch (SQLException e) {
