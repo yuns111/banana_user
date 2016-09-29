@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import banana_user.controller.Controllers;
 import banana_user.domain.Music;
+import banana_user.domain.User;
 import banana_user.repository.LoginRepository;
 
 public class MusicDao {
@@ -221,6 +222,46 @@ public class MusicDao {
 		}
 
 		return success;
+	}
+
+	public Music searchMusic() {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Music music = new Music();
+
+		try {
+
+			String sql = "select musicnumber, title, singer from music where title like '%?%' ";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				music.set(rs.getInt(1));
+				music.set(rs.getString(2));
+				music.set(rs.getString(3));
+				music.set(rs.getString(4));
+			}
+
+		} catch (SQLException e) {
+
+			System.out.println("음원검색중 예외가 발생했습니다.");
+			e.printStackTrace();
+
+		} finally {
+
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			if(pstmt != null) {
+				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+		}
+
+		return music;
+
 	}
 
 }

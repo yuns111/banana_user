@@ -77,5 +77,11 @@ public class MusicController {
 			playView.musicPlaying(selectedMusic);
 		}
 	}
+	
+	public void requestSearchMusic() {
+		
+		musicDao.searchMusic()
+		
+	}
 
 }
