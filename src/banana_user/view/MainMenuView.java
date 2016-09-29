@@ -71,7 +71,7 @@ public class MainMenuView {
 				if(loginYN == false){
 					System.out.println("메뉴를 다시 선택해 주세요.");
 				} else {						
-					//플레이리스트 구현 예정
+					Controllers.getPlayListController().goToPlayListView();
 				}
 				break;
 			case 0:
