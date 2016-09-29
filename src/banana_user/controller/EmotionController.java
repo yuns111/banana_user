@@ -25,14 +25,5 @@ public class EmotionController {
 		emotionSelectView.emotionSelectOne(emotionList);
 		
 	}
-	
-	public void requestSelectOneEmotion(int selectedEmotion){
-		
-		//선택한 감정에 해당하는 음원 목록(dao)
-		
-		
-		//음원목록출력
-		
-	}
 
 }

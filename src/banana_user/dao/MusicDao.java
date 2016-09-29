@@ -223,6 +223,41 @@ public class MusicDao {
 
 		return success;
 	}
+	
+	//감정별 음원 리스트
+	public ArrayList<Music> emotionMusicSelect(int emotionNumber) {
+
+		ArrayList<Music> emotionMusicList = new ArrayList<Music>();
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			stmt = Controllers.getProgramController().getConnection().createStatement();
+			String sql = "select musicNumber, title, singer from music where emotionNumber = " + emotionNumber;
+			rs = stmt.executeQuery(sql);
+
+			while(rs.next()) {
+				Music music = new Music();
+				music.setMusicNumber(rs.getInt("musicNumber"));
+				music.setTitle(rs.getString("title"));
+				music.setSinger(rs.getString("singer"));
+				emotionMusicList.add(music);
+			}
+		} catch (SQLException e){
+
+		} finally {
+
+			if(stmt != null) {
+				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}	
+		}
+
+		return emotionMusicList;
+	}
+	
 
 	public Music searchMusic() {
 
