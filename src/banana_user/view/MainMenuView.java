@@ -21,6 +21,7 @@ public class MainMenuView {
 		int menuTypeNumber = 0;
 
 		while(true){
+			Controllers.getMusicController().requestSelectAllMusic();
 			if(loginYN == false){
 				System.out.print("\n[1.로그인   2.회원가입  3.노래듣기  4.노래검색  0.프로그램 종료] : ");
 				menuTypeNumber = keyboard.nextInt();
