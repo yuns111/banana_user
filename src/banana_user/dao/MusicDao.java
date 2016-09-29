@@ -52,7 +52,7 @@ public class MusicDao {
 		return musicList;
 	}
 
-	public Music selectOneMusic(int musicNumber){
+	public Music selectOneMusic(ArrayList<Music> searchMusicList, int musicNumber){
 
 		Music selectedMusic = null;
 
@@ -64,6 +64,23 @@ public class MusicDao {
 
 			selectedMusic = new Music();
 			selectedMusic.setMusicNumber(0);
+			return selectedMusic;
+		}
+		
+		boolean inMusicList = false;
+		
+		for(int i = 0; i<searchMusicList.size(); i++) {
+			
+			if(searchMusicList.get(i).getMusicNumber() == musicNumber){
+				inMusicList = true;
+			}
+			
+		}
+		
+		if(!inMusicList){
+			
+			selectedMusic = new Music();
+			selectedMusic.setMusicNumber(-1);
 			return selectedMusic;
 		}
 

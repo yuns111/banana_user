@@ -15,13 +15,16 @@ public class MainMenuView {
 	}
 
 	public void showMainMenu(){
-
-		//로그인체크여부
-		boolean loginYN =Controllers.getLoginController().requestLoginYN();
+		
 		int menuTypeNumber = 0;
 
 		while(true){
+			
+			//로그인체크여부
+			boolean loginYN =Controllers.getLoginController().requestLoginYN();
+			
 			Controllers.getMusicController().requestSelectAllMusic();
+			
 			if(loginYN == false){
 				System.out.print("\n[1.로그인   2.회원가입  3.노래듣기  4.노래검색  0.프로그램 종료] : ");
 				menuTypeNumber = keyboard.nextInt();
@@ -47,8 +50,7 @@ public class MainMenuView {
 				}
 				break;
 			case 3:
-				Controllers.getMusicController().requestSelectAllMusic();
-				Controllers.getMusicController().requestCallMusicSelectOneView();
+				Controllers.getMusicController().requestCallMusicSelectOneView(Controllers.getMusicController().requestSelectAllMusic());
 				break;
 			case 4:
 				Controllers.getMusicController().requestSearchMusic();

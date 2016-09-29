@@ -16,12 +16,12 @@ public class MusicSelectView {
 		keyboard = new Scanner(System.in);
 	}
 	
-	public void musicSelectOneView(){
+	public void musicSelectOneView(ArrayList<Music> searchMusicList){
 		
-		System.out.print("음원번호로 선택해주세요 : ");
+		System.out.print("음원번호로 선택해주세요(0:이전메뉴) : ");
 		int musicNumber = keyboard.nextInt();
 		
-		Controllers.getMusicController().requestMusicSelectOne(musicNumber);
+		Controllers.getMusicController().requestMusicSelectOne(searchMusicList,musicNumber);
 		
 	}
 
@@ -60,6 +60,6 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 			}
 		}
-		Controllers.getMusicController().requestCallMusicSelectOneView();
+		Controllers.getMusicController().requestCallMusicSelectOneView(musicList);
 	}
 }
