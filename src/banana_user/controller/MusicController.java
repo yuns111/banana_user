@@ -78,5 +78,17 @@ public class MusicController {
 		
 		Controllers.getMenuController().requestShowMenu();
 	}
+	
+	//감정별 노래 리스트
+	public void requestEmotionMusic(int selectedEmotion){
+		
+		//선택한 감정에 해당하는 음원 목록(dao)
+		ArrayList<Music> emotionMusicList = musicDao.emotionMusicSelect(selectedEmotion);
+		
+		//음원목록출력
+		MusicSelectView musicSelectView = new MusicSelectView();
+		musicSelectView.musicSelectForListening(emotionMusicList);
+		
+	}
 
 }

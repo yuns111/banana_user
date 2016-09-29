@@ -53,7 +53,7 @@ public class MainMenuView {
 				//노래 검색 구현 예정
 				break;
 			case 5:
-				//감정 선택 구현 예정
+				Controllers.getEmotionController().requestCallSelectOneEmotionView();
 				break;
 			case 6:
 				if(loginYN == false){
