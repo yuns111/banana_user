@@ -2,7 +2,6 @@ package banana_user.view;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.ResourceBundle.Control;
 import java.util.Scanner;
 
 import banana_user.controller.Controllers;
