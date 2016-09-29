@@ -84,7 +84,6 @@ public class MusicController {
 		MusicSearchView musicSearchView = new MusicSearchView();
 		musicSearchView.musicSearchView();
 		
-
 	}
 
 	public void responseSearchMusic(String title) {
