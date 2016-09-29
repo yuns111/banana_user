@@ -17,25 +17,25 @@ public class TicketSelectListView {
 
 	}
 
-	public void printTicketAllList(ArrayList<Ticket> tickeyList) {
+	public void printTicketAllList(ArrayList<Ticket> tickets) {
 
 		boolean exit = true;
 		int ticketBuyNum = 0;
-		
+
 		System.out.println("\n[이용권목록 보기]");
 		System.out.println("번호\t이용권명\t\t가격\t이용기간");
 
-		if(tickeyList.size() == 0) {
+		if(tickets.size() == 0) {
 
 			new AlertView().alert("이용권이 없습니다.");	
 
 		} else {
 
-			for(int i = 0 ; i < tickeyList.size() ; i++) {
-				System.out.print(tickeyList.get(i).getTicketNumber() + "\t");
-				System.out.print(tickeyList.get(i).getTicketName() + "\t");
-				System.out.print(tickeyList.get(i).getPrice() + "\t");
-				System.out.println(tickeyList.get(i).getExpriationDate());
+			for(int i = 0 ; i < tickets.size() ; i++) {
+				System.out.print(tickets.get(i).getTicketNumber() + "\t");
+				System.out.print(tickets.get(i).getTicketName() + "\t");
+				System.out.print(tickets.get(i).getPrice() + "\t");
+				System.out.println(tickets.get(i).getExpriationDate());
 			}
 		}
 
@@ -62,5 +62,24 @@ public class TicketSelectListView {
 		//메뉴로 돌아가기 
 	}
 
+	public void printPurchaseTicketAllList(ArrayList<Ticket> tickets) {
+
+		System.out.println("\n[구매 이용권 보기]");
+		System.out.println("이용권명\t\t가격\t시작일\t\t종료일");
+
+		if(tickets.size() == 0) {
+
+			new AlertView().alert("이용권이 없습니다.");	
+
+		} else {
+
+			for(int i = 0 ; i < tickets.size() ; i++) {
+				System.out.print(tickets.get(i).getTicketName() + "\t");
+				System.out.print(tickets.get(i).getPrice() + "\t");
+				System.out.print(tickets.get(i).getStartDate() + "\t");
+				System.out.println(tickets.get(i).getEndDate());
+			}
+		}
+	}
 
 }
