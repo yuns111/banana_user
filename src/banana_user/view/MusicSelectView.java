@@ -42,10 +42,6 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 			}
 		}
-<<<<<<< HEAD
-		
-=======
->>>>>>> refs/remotes/origin/master
 	}
 	
 	//노래 재생전 나오는 음원 목록
