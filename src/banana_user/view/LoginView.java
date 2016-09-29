@@ -12,7 +12,7 @@ public class LoginView {
 		keyboard = new Scanner(System.in);
 	}
 
-	public void LoginView(){
+	public void loginView(){
 
 		System.out.print("\nid를 입력하세요 : ");
 		String loginId = keyboard.next();
