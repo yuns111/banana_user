@@ -41,7 +41,7 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 			}
 		}
-		Controllers.getMenuController().requestShowMenu();
+		
 	}
 	
 	//노래 재생전 나오는 음원 목록
