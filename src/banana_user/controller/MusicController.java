@@ -42,7 +42,8 @@ public class MusicController {
 		Music selectedMusic = musicDao.selectOneMusic(musicNumber);
 		
 		if(selectedMusic.getMusicNumber() == 0){
-			//메뉴로 돌아가기
+			
+			Controllers.getMenuController().requestShowMenu();
 			
 		} else if(selectedMusic.getMusicNumber() < 0) {
 			
