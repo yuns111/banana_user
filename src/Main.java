@@ -7,6 +7,10 @@ public class Main {
 		new Controllers();
 		Controllers.getMenuController().requestShowMenu();
 
+<<<<<<< HEAD
+=======
+		Controllers.getMenuController().requestShowMenu();
+>>>>>>> refs/remotes/origin/master
 	}
 
 }
