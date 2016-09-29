@@ -17,7 +17,7 @@ public class LoginController {
 
 		//view
 		LoginView loginView = new LoginView();
-		loginView.LoginView();
+		loginView.loginView();
 
 	}
 

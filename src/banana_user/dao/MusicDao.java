@@ -1,5 +1,6 @@
 package banana_user.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -106,11 +107,14 @@ public class MusicDao {
 		//0:비로그인상태  1:이용권구매안하거나 기간만료 2:이용권 유
 		int userNumber=0;
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String endDate = null;
 
 		//재생하면 재생카운트 증가
 		try {
+
+			Controllers.getProgramController().getConnection().setAutoCommit(false);
 
 			String sql = "update Music set PlayingCount = " + (selectedMusic.getPlayingCount() + 1)
 					+" where musicNumber = " + selectedMusic.getMusicNumber();
@@ -118,8 +122,14 @@ public class MusicDao {
 
 			stmt.executeUpdate(sql);
 
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+			try {
+				Controllers.getProgramController().getConnection().rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
 		}
 
 		if(LoginRepository.getLogin().getLoginId() == null){
@@ -129,6 +139,7 @@ public class MusicDao {
 		} else {
 
 			try {
+				//현재 로그인된 유저 넘버 반환
 				String sql = "select userNumber from banana_user where userId = '"
 						+LoginRepository.getLogin().getLoginId()+"'";
 				stmt = Controllers.getProgramController().getConnection().createStatement();
@@ -138,10 +149,23 @@ public class MusicDao {
 					userNumber = rs.getInt(1);
 				}
 
+				//로그인상태의 유저의 플레이리스트로 들어감
+				String sql2 = "insert into playList values(?,?)";
+				pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql2);
+				pstmt.setInt(1, selectedMusic.getMusicNumber());
+				pstmt.setInt(2, userNumber);
+				pstmt.executeUpdate();
+
+
 			} catch (SQLException e) {
 
 				e.printStackTrace();
 
+				try {
+					Controllers.getProgramController().getConnection().rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} 
 			}  finally {
 				if(rs != null) {
 					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
@@ -176,15 +200,21 @@ public class MusicDao {
 						}
 					}
 				}
-
+				Controllers.getProgramController().getConnection().commit();
 			} catch (SQLException e) {
 
 				e.printStackTrace();
-			}  finally {
+
+				try {
+					Controllers.getProgramController().getConnection().rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} 
+			} finally {
 				if(rs != null) {
-					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+					try { rs.close(); } catch (SQLException e1) { e1.printStackTrace(); }
 				} if(stmt != null) {
-					try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+					try { stmt.close(); } catch (SQLException e1) { e1.printStackTrace(); }
 				}
 
 			}
