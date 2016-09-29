@@ -10,6 +10,7 @@ public class Music {
 	private int emotionNumber;
 	private int playingCount;
 	
+<<<<<<< HEAD
 	
 	
 	public Music() {
@@ -20,6 +21,16 @@ public class Music {
 		this.musicNumber = musicNumber;
 		this.title = title;
 		this.singer = singer;		
+=======
+	public Music() {
+		
+	}
+	
+	public Music(int musicNumber, String title, String singer) {
+		this.musicNumber = musicNumber;
+		this.title = title;
+		this.singer = singer;
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	//getter setter

@@ -25,7 +25,7 @@ public class EmotionSelectOneView {
 		
 		int selectedEmotion = keyboard.nextInt();
 		
-		Controllers.getEmotionController().requestSelectOneEmotion(selectedEmotion);
+		Controllers.getMusicController().requestEmotionMusic(selectedEmotion);
 	}
 
 }

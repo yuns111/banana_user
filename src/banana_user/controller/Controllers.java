@@ -17,6 +17,7 @@ public class Controllers {
 		programController = new ProgramController();
 		userController = new UserController();
 		loginController = new LoginController();
+
 		emotionController = new EmotionController();
 		musicController = new MusicController();
 		ticketController = new TicketController();
