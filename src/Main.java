@@ -7,7 +7,7 @@ public class Main {
 		new Controllers();
 
 		Controllers.getMusicController().requestSelectAllMusic();
-		Controllers.getMenuController().requestShowMenu();
+		
 	}
 
 }
