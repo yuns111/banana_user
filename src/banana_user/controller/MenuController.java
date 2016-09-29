@@ -7,10 +7,11 @@ public class MenuController {
 
 	}
 	
-	public void requestShowMenu(){
+	public void requestShowMenu() {
 
 		MainMenuView mainMenuView = new MainMenuView();
 		mainMenuView.showMainMenu();
+		
 	}
 
 }

@@ -37,6 +37,7 @@ public class UserUpdateView {
 		user = new User(userPassword, userName, userGender, userPhoneNumber);
 	
 		Controllers.getUserController().responseUpdateUser(user);
+		
 	}
 
 }

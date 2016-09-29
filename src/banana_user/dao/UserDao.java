@@ -190,7 +190,7 @@ public class UserDao {
 
 			if(rs.next()) {				
 				user.setTicketName(rs.getString(1));
-			} else{
+			} else {
 				user.setTicketName("없음");
 			}
 

@@ -29,6 +29,5 @@ public class Login {
 	public void setLoginPassword(String loginPassword) {
 		this.loginPassword = loginPassword;
 	}
-	
 		
 }

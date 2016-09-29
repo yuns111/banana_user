@@ -10,9 +10,10 @@ public class LoginView {
 	public LoginView() {
 
 		keyboard = new Scanner(System.in);
+		
 	}
 
-	public void loginView(){
+	public void loginView() {
 
 		System.out.print("\nid를 입력하세요 : ");
 		String loginId = keyboard.next();

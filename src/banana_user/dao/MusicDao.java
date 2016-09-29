@@ -15,6 +15,7 @@ import banana_user.repository.LoginRepository;
 public class MusicDao {
 
 	public MusicDao() {
+		
 	}
 
 	//음원 목록
@@ -25,6 +26,7 @@ public class MusicDao {
 		ResultSet rs = null;
 
 		try {
+			
 			stmt = Controllers.getProgramController().getConnection().createStatement();
 			String sql = "select musicNumber, title, singer, lyrics from music order by playingCount desc";
 			rs = stmt.executeQuery(sql);
@@ -37,7 +39,8 @@ public class MusicDao {
 				music.setLyrics(rs.getString("lyrics"));
 				musicList.add(music);
 			}
-		} catch (SQLException e){
+			
+		} catch (SQLException e) {
 
 		} finally {
 
@@ -47,21 +50,21 @@ public class MusicDao {
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}	
+			
 		}
 
 		return musicList;
+		
 	}
 
-	public Music selectOneMusic(ArrayList<Music> searchMusicList, int musicNumber){
+	public Music selectOneMusic(ArrayList<Music> searchMusicList, int musicNumber) {
 
 		Music selectedMusic = null;
-
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		//선택번호가 0이면 노래를 안들을 것임
 		if(musicNumber==0){
-
 			selectedMusic = new Music();
 			selectedMusic.setMusicNumber(0);
 			return selectedMusic;
@@ -71,17 +74,18 @@ public class MusicDao {
 		
 		for(int i = 0; i<searchMusicList.size(); i++) {
 			
-			if(searchMusicList.get(i).getMusicNumber() == musicNumber){
+			if(searchMusicList.get(i).getMusicNumber() == musicNumber) {
 				inMusicList = true;
 			}
 			
 		}
 		
-		if(!inMusicList){
+		if(!inMusicList) {
 			
 			selectedMusic = new Music();
 			selectedMusic.setMusicNumber(-1);
 			return selectedMusic;
+			
 		}
 
 		String sql = "select * from Music where musicNumber = " + musicNumber;
@@ -91,7 +95,7 @@ public class MusicDao {
 			stmt = Controllers.getProgramController().getConnection().createStatement();
 			rs = stmt.executeQuery(sql);
 
-			if(rs.next()){
+			if(rs.next()) {
 
 				selectedMusic = new Music();
 				selectedMusic.setMusicNumber(rs.getInt(1));
@@ -107,19 +111,24 @@ public class MusicDao {
 			}
 
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		} finally {
+			
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 			} if(stmt != null) {
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
+			
 		}
 
 		return selectedMusic;
+		
 	}
 
-	public int playMusic(Music selectedMusic){
+	public int playMusic(Music selectedMusic) {
 
 		int success = 0;
 		//0:비로그인상태  1:이용권구매안하거나 기간만료 2:이용권 유
@@ -142,33 +151,42 @@ public class MusicDao {
 
 
 		} catch (SQLException e1) {
+			
 			e1.printStackTrace();
+			
 			try {
+				
 				Controllers.getProgramController().getConnection().rollback();
+				
 			} catch (SQLException e) {
+				
 				e.printStackTrace();
+				
 			} 
+			
 		}
 
-		if(LoginRepository.getLogin().getLoginId() == null){
+		if(LoginRepository.getLogin().getLoginId() == null) {
 
 			return success;
 
 		} else {
 
 			try {
+				
 				//현재 로그인된 유저 넘버 반환
 				String sql = "select userNumber from banana_user where userId = '"
 						+LoginRepository.getLogin().getLoginId()+"'";
 				stmt = Controllers.getProgramController().getConnection().createStatement();
 
 				rs = stmt.executeQuery(sql);
-				if(rs.next()){
+				if(rs.next()) {
 					userNumber = rs.getInt(1);
 				}
 
 				//로그인상태의 유저의 플레이리스트로 들어감
 				try {
+					
 					String sql2 = "insert into playList values(?,?)";
 					pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql2);
 					pstmt.setInt(1, selectedMusic.getMusicNumber());
@@ -176,21 +194,27 @@ public class MusicDao {
 					pstmt.executeUpdate();
 					
 				} catch (SQLIntegrityConstraintViolationException e) {
+					
 					System.out.println("플레이리스트에서 존재하는 곡을 재생합니다.");
+					
 				}
-				
-
 
 			} catch (SQLException e) {
 
 				e.printStackTrace();
 
 				try {
+					
 					Controllers.getProgramController().getConnection().rollback();
+					
 				} catch (SQLException e1) {
+					
 					e1.printStackTrace();
+					
 				} 
+				
 			}  finally {
+				
 				if(rs != null) {
 					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 				} if(stmt != null) {
@@ -200,41 +224,44 @@ public class MusicDao {
 			}
 
 			try {
+				
 				String sql = "select max(endDate) from purchaseTicket where userNumber = " + userNumber;
 				stmt = Controllers.getProgramController().getConnection().createStatement();
-
 				rs = stmt.executeQuery(sql);
 
 				if(rs.next()) {
-
 					endDate = rs.getString(1);
-
-					if(rs.getString(1) == null){
-
+					
+					if(rs.getString(1) == null) {
 						success = 1;
-
-					}  else	{
-
+					} else	{
 						LocalDate end = LocalDate.parse(endDate);
 						LocalDate currentDate = LocalDate.now();
 
-						if(end.isAfter(currentDate)){
-
+						if(end.isAfter(currentDate)) {
 							success = 2;
 						}
 					}
 				}
+				
 				Controllers.getProgramController().getConnection().commit();
+				
 			} catch (SQLException e) {
 
 				e.printStackTrace();
 
 				try {
+					
 					Controllers.getProgramController().getConnection().rollback();
+					
 				} catch (SQLException e1) {
+					
 					e1.printStackTrace();
+					
 				} 
+				
 			} finally {
+				
 				if(rs != null) {
 					try { rs.close(); } catch (SQLException e1) { e1.printStackTrace(); }
 				} if(stmt != null) {
@@ -242,9 +269,11 @@ public class MusicDao {
 				}
 
 			}
+			
 		}
 
 		return success;
+		
 	}
 	
 	//감정별 음원 리스트
@@ -255,6 +284,7 @@ public class MusicDao {
 		ResultSet rs = null;
 
 		try {
+			
 			stmt = Controllers.getProgramController().getConnection().createStatement();
 			String sql = "select musicNumber, title, singer from music where emotionNumber = " + emotionNumber;
 			rs = stmt.executeQuery(sql);
@@ -266,7 +296,8 @@ public class MusicDao {
 				music.setSinger(rs.getString("singer"));
 				emotionMusicList.add(music);
 			}
-		} catch (SQLException e){
+			
+		} catch (SQLException e) {
 
 		} finally {
 
@@ -276,18 +307,18 @@ public class MusicDao {
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}	
+			
 		}
 
 		return emotionMusicList;
+		
 	}
-	
 
 	public ArrayList<Music> searchMusic(String title) {
 
 		ArrayList<Music> musics = new ArrayList<Music>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		
 		try {
 
