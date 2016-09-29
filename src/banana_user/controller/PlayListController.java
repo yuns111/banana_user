@@ -15,6 +15,7 @@ public class PlayListController {
 	public void goToPlayListMenuView(){
 		
 		PlayListView playListView = new PlayListView();
+		playListView.playListMenuView();
 		
 	}
 	
