@@ -7,4 +7,5 @@ public class AlertView {
 		System.out.println("[알림] " + message);
 
 	}
+	
 }

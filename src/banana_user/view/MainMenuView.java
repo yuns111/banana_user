@@ -52,6 +52,7 @@ public class MainMenuView {
 				break;
 			case 4:
 				//노래 검색 구현 예정
+				Controllers.getMusicController().requestSearchMusic();
 				break;
 			case 5:
 				Controllers.getEmotionController().requestCallSelectOneEmotionView();

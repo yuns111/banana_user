@@ -258,4 +258,46 @@ public class MusicDao {
 	}
 	
 
+	public ArrayList<Music> searchMusic(String title) {
+
+		ArrayList<Music> musics = new ArrayList<Music>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		try {
+
+			String sql = "select musicnumber, title, singer from music where title like '%'||?||'%' ";
+			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Music music = new Music();
+				music.setMusicNumber(rs.getInt(1));
+				music.setTitle(rs.getString(2));
+				music.setSinger(rs.getString(3));
+				musics.add(music);
+			}
+
+		} catch (SQLException e) {
+
+			System.out.println("음원검색중 예외가 발생했습니다.");
+			e.printStackTrace();
+
+		} finally {
+
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			if(pstmt != null) {
+				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+		}
+
+		return musics;
+
+	}
+
 }
