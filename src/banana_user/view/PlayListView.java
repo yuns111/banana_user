@@ -31,18 +31,18 @@ public class PlayListView {
 
 		}
 
-		Controllers.getPlayListController().goToPlayListMenuView();
+		Controllers.getPlayListController().goToPlayListMenuView(musicInfo);
 	}
 
 	//플레이리스트의 메뉴뷰
-	public void playListMenuView(){
+	public void playListMenuView(ArrayList<Music> searchMusicList){
 
 		while(true){
-			System.out.println("1.선택곡 재생 2.선택곡 삭제 3.모든곡 삭제 4.이전 화면");
+			System.out.print("[1.선택곡 재생 2.선택곡 삭제 3.모든곡 삭제 4.이전 화면] : ");
 			int selectPlayListMenu = keyboard.nextInt();
 
 			if(selectPlayListMenu == 1){
-				Controllers.getPlayListController().goToSelectPlayMusicView();
+				Controllers.getPlayListController().goToSelectPlayMusicView(searchMusicList);
 			} else if(selectPlayListMenu == 2){
 				Controllers.getPlayListController().goToDeleteMusicView();
 			} else if(selectPlayListMenu == 3){
@@ -58,12 +58,12 @@ public class PlayListView {
 	}
 
 	//플레이리스트곡 재생
-	public void playMusicView(){
+	public void playMusicView(ArrayList<Music> searchMusicList){
 		System.out.println("[곡 선택]");
-		System.out.println("곡번호를 입력하세요.");
+		System.out.print("곡번호를 입력하세요 : ");
 		int playMusicNumber = keyboard.nextInt();
 
-		Controllers.getMusicController().requestMusicSelectOne(playMusicNumber);
+		Controllers.getMusicController().requestMusicSelectOne(searchMusicList,playMusicNumber);
 
 
 	}
@@ -71,7 +71,7 @@ public class PlayListView {
 	//플레이리스트 목록 중 하나 삭제
 	public void delecteMusicOfListView(){
 		System.out.println("[곡 선택]");
-		System.out.println("곡번호를 입력하세요.");
+		System.out.print("곡번호를 입력하세요 : ");
 		int deleteMusicOfListNumber = keyboard.nextInt();
 		boolean success = Controllers.getPlayListController().requestDeleteMusicOfList(deleteMusicOfListNumber);
 

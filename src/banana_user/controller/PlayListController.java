@@ -25,18 +25,18 @@ public class PlayListController {
 	}
 	
 	//플레이리스트메뉴뷰로 가는 메서드
-	public void goToPlayListMenuView(){
+	public void goToPlayListMenuView(ArrayList<Music> searchMusicList){
 		
 		PlayListView playListView = new PlayListView();
-		playListView.playListMenuView();
+		playListView.playListMenuView(searchMusicList);
 		
 	}
 	
 	//플레이리스트의 한곡 재생뷰로 가는 메서드
-	public void goToSelectPlayMusicView(){
+	public void goToSelectPlayMusicView(ArrayList<Music> searchMusicList){
 
 		PlayListView playListView = new PlayListView();
-		playListView.playMusicView();
+		playListView.playMusicView(searchMusicList);
 		
 	}
 

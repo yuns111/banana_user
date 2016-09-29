@@ -39,7 +39,7 @@ public class MusicSearchView {
 				System.out.println(searchMusicList.get(i).getSinger());
 			}
 		}
-		Controllers.getMusicController().requestCallMusicSelectOneView();
+		Controllers.getMusicController().requestCallMusicSelectOneView(searchMusicList);
 	}
 	
 }
