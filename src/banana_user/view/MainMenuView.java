@@ -60,11 +60,7 @@ public class MainMenuView {
 				Controllers.getMusicController().requestSearchMusic();
 				break;
 			case 5:
-<<<<<<< HEAD
 				if(loginYN == false) {
-=======
-				if(loginYN == false){
->>>>>>> refs/remotes/origin/master
 					System.out.println("메뉴를 다시 선택해 주세요.");
 				} else {
 					Controllers.getEmotionController().requestCallSelectOneEmotionView();

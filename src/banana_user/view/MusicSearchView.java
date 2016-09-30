@@ -34,11 +34,9 @@ public class MusicSearchView {
 		if(searchMusicList.size() == 0) {
 
 			new AlertView().alert("음원이 없습니다.");
-<<<<<<< HEAD
 
-=======
 			Controllers.getMusicController().requestSearchMusic();
->>>>>>> refs/remotes/origin/master
+
 		} else {
 
 			System.out.println("음원번호\t노래제목\t\t가수");	
