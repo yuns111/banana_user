@@ -27,7 +27,7 @@ public class EmotionSelectOneView {
 			
 		}
 		
-		int selectedEmotion = keyboard.nextInt();
+		int selectedEmotion = -1;
 		
 		while(true){
 			try {

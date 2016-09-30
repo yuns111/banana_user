@@ -35,7 +35,7 @@ public class MusicSearchView {
 
 			new AlertView().alert("음원이 없습니다.");
 
-			Controllers.getMusicController().requestSearchMusic();
+			Controllers.getMenuController().requestShowMenu();
 
 		} else {
 

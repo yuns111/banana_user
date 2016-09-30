@@ -17,7 +17,7 @@ public class MainMenuView {
 
 	public void showMainMenu() {
 
-		int menuTypeNumber = 0;
+		int menuTypeNumber = -1;
 
 		while(true) {
 
@@ -33,7 +33,6 @@ public class MainMenuView {
 				try {
 
 					menuTypeNumber = keyboard.nextInt();
-					break;
 
 				} catch (InputMismatchException e) {
 
@@ -50,7 +49,6 @@ public class MainMenuView {
 				try {
 
 					menuTypeNumber = keyboard.nextInt();
-					break;
 
 				} catch (InputMismatchException e) {
 

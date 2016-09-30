@@ -39,7 +39,7 @@ public class UserMypageView {
 
 			System.out.print("\n[1.회원정보수정  2.이용권 구매정보  3.회원탈퇴  9.메인메뉴  0.프로그램 종료] : ");
 
-			int selectedMenu = keyboard.nextInt();
+			int selectedMenu = -1;
 
 			try {
 

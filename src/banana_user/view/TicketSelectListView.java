@@ -20,7 +20,7 @@ public class TicketSelectListView {
 	public void printTicketAllList(ArrayList<Ticket> tickets) {
 
 		boolean exit = true;
-		int ticketBuyNum = 0;
+		int ticketBuyNum = -1;
 
 		System.out.println("\n[이용권목록 보기]");
 		System.out.println("번호\t이용권명\t\t가격\t이용기간");

@@ -56,6 +56,9 @@ public class LoginDao {
 
 			System.out.println("SQL문장이 잘못되었습니다.");	
 
+		} catch(NullPointerException e){
+		
+			
 		} finally {
 
 			try {
