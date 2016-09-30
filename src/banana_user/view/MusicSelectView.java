@@ -1,6 +1,7 @@
 package banana_user.view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import banana_user.domain.Music;
 
@@ -20,7 +21,22 @@ public class MusicSelectView {
 	public void musicSelectOneView(ArrayList<Music> searchMusicList) {
 		
 		System.out.print("음원번호로 선택해주세요(0:이전메뉴) : ");
-		int musicNumber = keyboard.nextInt();
+		int musicNumber = 0;
+		
+		while(true){
+			try {
+
+				musicNumber = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
+		
 		
 		Controllers.getMusicController().requestMusicSelectOne(searchMusicList,musicNumber);
 		

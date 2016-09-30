@@ -1,5 +1,6 @@
 package banana_user.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_user.controller.Controllers;
@@ -26,15 +27,36 @@ public class MainMenuView {
 			Controllers.getMusicController().requestSelectAllMusic();
 
 			if(loginYN == false) {
-				
+
 				System.out.print("\n[1.로그인   2.회원가입  3.노래듣기  4.노래검색  0.프로그램 종료] : ");
-				menuTypeNumber = keyboard.nextInt();
-				
+
+				try {
+
+					menuTypeNumber = keyboard.nextInt();
+					break;
+
+				} catch (InputMismatchException e) {
+
+					keyboard = new Scanner(System.in);
+
+				} 
+
+
+
 			} else {
-				
+
 				System.out.print("\n[1.로그아웃   2.마이페이지  3.노래듣기  4.노래검색  5.감정선택  6.이용권구매  7.플레이리스트 0.프로그램 종료] : ");
-				menuTypeNumber = keyboard.nextInt();
 				
+				try {
+
+					menuTypeNumber = keyboard.nextInt();
+					break;
+
+				} catch (InputMismatchException e) {
+
+					keyboard = new Scanner(System.in);
+
+				} 
 			}
 
 			switch(menuTypeNumber) {
@@ -86,9 +108,9 @@ public class MainMenuView {
 			default :
 				System.out.println("메뉴를 다시 선택해 주세요.");
 			}
-			
+
 		}
-		
+
 	}
-	
+
 }

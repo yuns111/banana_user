@@ -1,6 +1,7 @@
 package banana_user.view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_user.controller.Controllers;
@@ -27,6 +28,20 @@ public class EmotionSelectOneView {
 		}
 		
 		int selectedEmotion = keyboard.nextInt();
+		
+		while(true){
+			try {
+
+				selectedEmotion = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
+
+			} 
+		}
 		
 		Controllers.getMusicController().requestEmotionMusic(selectedEmotion);
 		
