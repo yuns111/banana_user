@@ -51,7 +51,9 @@ public class MusicPlayingView {
 			}
 			
 			if(i%10 == 0) {
+				
 				System.out.println();
+				
 			}
 			
 		}

@@ -31,10 +31,14 @@ public class LoginController {
 		AlertView alertView = new AlertView();
 
 		if(success) {
+			
 			alertView.alert("로그인을 성공했습니다.");
+			
 		} else {
+			
 			alertView.alert("id 또는 password가 틀렸습니다.");
 			Controllers.getLoginController().requestLogin();
+			
 		}
 		
 		Controllers.getMenuController().requestShowMenu();
@@ -48,7 +52,9 @@ public class LoginController {
 		AlertView alertView = new AlertView();
 
 		if(success) {
+			
 			alertView.alert("로그아웃을 성공했습니다.");
+			
 		} 
 		
 	}

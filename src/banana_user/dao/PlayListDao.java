@@ -31,11 +31,13 @@ public class PlayListDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				Music music = new Music();
 				music.setMusicNumber(rs.getInt("musicnumber"));
 				music.setTitle(rs.getString("title"));
 				music.setSinger(rs.getString("singer"));
 				musicInfo.add(music);
+				
 			}
 
 		} catch (SQLException e) {
@@ -44,11 +46,16 @@ public class PlayListDao {
 
 		} finally {
 
-			if(rs != null){
+			if(rs != null) {
+				
 				try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+				
 			}
-			if(pstmt != null){
+			
+			if(pstmt != null) {
+				
 				try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				
 			}
 
 		}
@@ -72,8 +79,10 @@ public class PlayListDao {
 			pstmt.setString(2, loginID);
 			result = pstmt.executeUpdate();
 
-			if(result != 0){
+			if(result != 0) {
+				
 				success = true;
+				
 			}
 
 		} catch(SQLException e) {
@@ -114,8 +123,10 @@ public class PlayListDao {
 			pstmt.setString(1, loginID);
 			result = pstmt.executeUpdate();
 
-			if(result != 0){
+			if(result != 0) {
+				
 				success = true;
+				
 			}
 
 		} catch(SQLException e) {
@@ -126,7 +137,7 @@ public class PlayListDao {
 			
 			if(pstmt != null) {
 			
-				try {pstmt.close();} catch(SQLException e){e.printStackTrace();}
+				try {pstmt.close();} catch(SQLException e) {e.printStackTrace();}
 				
 				catch (Exception e) {
 					

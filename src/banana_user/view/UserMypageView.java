@@ -41,6 +41,7 @@ public class UserMypageView {
 			int selectedMenu = keyboard.nextInt();
 
 			switch (selectedMenu) {
+			
 			case 1:
 				Controllers.getUserController().requestUpdateUser();
 				break;

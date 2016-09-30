@@ -32,12 +32,14 @@ public class MusicDao {
 			rs = stmt.executeQuery(sql);
 
 			while(rs.next()) {
+				
 				Music music = new Music();
 				music.setMusicNumber(rs.getInt("musicNumber"));
 				music.setTitle(rs.getString("title"));
 				music.setSinger(rs.getString("singer"));
 				music.setLyrics(rs.getString("lyrics"));
 				musicList.add(music);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -45,10 +47,15 @@ public class MusicDao {
 		} finally {
 
 			if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}	
 			
 		}
@@ -64,10 +71,12 @@ public class MusicDao {
 		ResultSet rs = null;
 
 		//선택번호가 0이면 노래를 안들을 것임
-		if(musicNumber==0){
+		if(musicNumber == 0) {
+			
 			selectedMusic = new Music();
 			selectedMusic.setMusicNumber(0);
 			return selectedMusic;
+			
 		}
 		
 		boolean inMusicList = false;
@@ -75,7 +84,9 @@ public class MusicDao {
 		for(int i = 0; i<searchMusicList.size(); i++) {
 			
 			if(searchMusicList.get(i).getMusicNumber() == musicNumber) {
+				
 				inMusicList = true;
+				
 			}
 			
 		}
@@ -106,8 +117,10 @@ public class MusicDao {
 				selectedMusic.setPlayingCount(rs.getInt(6));
 
 			} else {
+				
 				selectedMusic = new Music();
 				selectedMusic.setMusicNumber(-1);
+				
 			}
 
 		} catch (SQLException e) {
@@ -117,9 +130,13 @@ public class MusicDao {
 		} finally {
 			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			} if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 			
 		}
@@ -180,8 +197,11 @@ public class MusicDao {
 				stmt = Controllers.getProgramController().getConnection().createStatement();
 
 				rs = stmt.executeQuery(sql);
+				
 				if(rs.next()) {
+					
 					userNumber = rs.getInt(1);
+					
 				}
 
 				//로그인상태의 유저의 플레이리스트로 들어감
@@ -216,9 +236,13 @@ public class MusicDao {
 			}  finally {
 				
 				if(rs != null) {
+					
 					try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+					
 				} if(stmt != null) {
+					
 					try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+					
 				}
 
 			}
@@ -233,15 +257,22 @@ public class MusicDao {
 					endDate = rs.getString(1);
 					
 					if(rs.getString(1) == null) {
+						
 						success = 1;
+						
 					} else	{
+						
 						LocalDate end = LocalDate.parse(endDate);
 						LocalDate currentDate = LocalDate.now();
 
 						if(end.isAfter(currentDate)) {
+							
 							success = 2;
+							
 						}
+						
 					}
+					
 				}
 				
 				Controllers.getProgramController().getConnection().commit();
@@ -263,9 +294,13 @@ public class MusicDao {
 			} finally {
 				
 				if(rs != null) {
+					
 					try { rs.close(); } catch (SQLException e1) { e1.printStackTrace(); }
+					
 				} if(stmt != null) {
+					
 					try { stmt.close(); } catch (SQLException e1) { e1.printStackTrace(); }
+					
 				}
 
 			}
@@ -290,11 +325,13 @@ public class MusicDao {
 			rs = stmt.executeQuery(sql);
 
 			while(rs.next()) {
+				
 				Music music = new Music();
 				music.setMusicNumber(rs.getInt("musicNumber"));
 				music.setTitle(rs.getString("title"));
 				music.setSinger(rs.getString("singer"));
 				emotionMusicList.add(music);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -302,10 +339,15 @@ public class MusicDao {
 		} finally {
 
 			if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}	
 			
 		}
@@ -328,11 +370,13 @@ public class MusicDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				Music music = new Music();
 				music.setMusicNumber(rs.getInt(1));
 				music.setTitle(rs.getString(2));
 				music.setSinger(rs.getString(3));
 				musics.add(music);
+				
 			}
 
 		} catch (SQLException e) {
@@ -343,10 +387,15 @@ public class MusicDao {
 		} finally {
 
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}

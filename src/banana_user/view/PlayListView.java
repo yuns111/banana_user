@@ -25,7 +25,7 @@ public class PlayListView {
 		ArrayList<Music> musicInfo = Controllers.getPlayListController().requestPlayList();
 		System.out.println("음원번호\t노래제목\t가수");
 
-		for(int i = 0; i< musicInfo.size();i++) {
+		for(int i = 0; i < musicInfo.size(); i++) {
 			
 			System.out.print(musicInfo.get(i).getMusicNumber()+"\t");
 			System.out.print(musicInfo.get(i).getTitle()+"\t");

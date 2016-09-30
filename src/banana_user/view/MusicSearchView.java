@@ -40,10 +40,13 @@ public class MusicSearchView {
 			System.out.println("음원번호\t노래제목\t\t가수");	
 
 			for(int i = 0; i < searchMusicList.size(); i++) {
+				
 				System.out.print(searchMusicList.get(i).getMusicNumber() + "\t");
 				System.out.print(searchMusicList.get(i).getTitle() + "\t\t");
 				System.out.println(searchMusicList.get(i).getSinger());
+				
 			}
+			
 		}
 
 		Controllers.getMusicController().requestCallMusicSelectOneView(searchMusicList);

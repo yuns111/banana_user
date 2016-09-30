@@ -39,6 +39,7 @@ public class TicketSelectListView {
 				System.out.println(tickets.get(i).getExpriationDate());
 				
 			}
+			
 		}
 
 		while(exit) {

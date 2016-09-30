@@ -33,12 +33,15 @@ public class TicketDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				Ticket ticket = new Ticket();
 				ticket.setTicketNumber(rs.getInt(1));
 				ticket.setTicketName(rs.getString(2));
 				ticket.setPrice(rs.getInt(3));
 				ticket.setExpriationDate(rs.getInt(4));
+				
 				tickets.add(ticket);
+				
 			}
 
 		} catch (SQLException e) {
@@ -48,10 +51,15 @@ public class TicketDao {
 		} finally {
 			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(pstmt != null) {
+				
 				try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
 
 		}
@@ -81,10 +89,13 @@ public class TicketDao {
 			rs = pstmt.executeQuery(); 
 
 			while(rs.next()) {
+				
 				maxPurchaseNumber = rs.getInt(1);
 				
 				if(rs.wasNull()) {
+					
 					maxPurchaseNumber = 1;
+					
 				}
 				
 			}
@@ -95,8 +106,10 @@ public class TicketDao {
 			pstmt.setString(1,LoginRepository.getLogin().getLoginId());
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
+			while(rs.next()) {
+				
 				userNumber = rs.getInt(1);
+				
 			}
 
 			//티켓에서 가져옴
@@ -105,7 +118,7 @@ public class TicketDao {
 			pstmt.setInt(1,ticketBuyNum);
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
+			while(rs.next()) {
 
 				expirationDate=rs.getInt(1);
 				ticketPrice=rs.getInt(2);
@@ -140,13 +153,15 @@ public class TicketDao {
 				pstmt.setInt(6,ticketPrice);
 				result = pstmt.executeUpdate();
 
-				if(result == 1){
+				if(result == 1) {
+					
 					success = true;
+					
 				}
 				
 			}
 
-		} catch(SQLException e){
+		} catch(SQLException e) {
 			
 			System.out.println("티켓 구매 중 예외가 발생하였습니다.");
 			
@@ -172,7 +187,9 @@ public class TicketDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				userNumber = rs.getInt(1);
+				
 			}
 
 			sql = "select ticketname, t.price, startdate, enddate from ticket t, purchaseticket p where t.TICKETNUMBER = p.TICKETNUMBER and p.USERNUMBER = ? order by purchasenumber desc";
@@ -181,12 +198,15 @@ public class TicketDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				String ticketName = rs.getString(1);
 				int price = rs.getInt(2);
 				String startDate = rs.getString(3);
 				String endDate = rs.getString(4);
 				Ticket ticket = new Ticket(ticketName, price, startDate, endDate);
-				tickets.add(ticket);					
+				
+				tickets.add(ticket);
+				
 			}
 
 		} catch(SQLException e) {

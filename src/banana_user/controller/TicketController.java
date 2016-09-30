@@ -33,10 +33,14 @@ public class TicketController {
 		boolean success = ticketDao.buyOneTicket(ticketBuyNum);
 		AlertView alertView = new AlertView();
 
-		if(success){
+		if(success) {
+			
 			alertView.alert("결제 완료");
-		} else{
+			
+		} else {
+			
 			alertView.alert("이미 구매한 이용권이 있습니다");
+			
 		}
 		
 		Controllers.getMenuController().requestShowMenu();

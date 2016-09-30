@@ -48,12 +48,18 @@ public class MusicController {
 		Music selectedMusic = musicDao.selectOneMusic(searchMusicList,musicNumber);
 
 		if(selectedMusic.getMusicNumber() == 0) {
+			
 			Controllers.getMenuController().requestShowMenu();
+			
 		} else if(selectedMusic.getMusicNumber() < 0) {
+			
 			new AlertView().alert("해당하는 노래가 없습니다.");
+			
 		} else {
+			
 			//노래 재생 메서드 호출
 			requestPlayingMusic(selectedMusic);
+			
 		}
 
 	}
@@ -68,13 +74,19 @@ public class MusicController {
 		
 		//값이 true면 view에서 노래 출력
 		if(success == 0) {
+			
 			//비로그인상태 비로그인상태입니다 1분재생 -> 비로그인 메뉴
 			playView.unLoginPlaying(selectedMusic);
+			
 		} else if(success == 1) {
+			
 			//현재 이용권이 없습니다 1분재생 ->로그인메뉴
 			playView.noTicketPlaying(selectedMusic);
+			
 		} else {
+			
 			playView.musicPlaying(selectedMusic);
+			
 		}
 		
 	}

@@ -47,7 +47,9 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 				
 			}
+			
 		}
+		
 	}
 	
 	//노래 재생전 나오는 음원 목록
@@ -71,6 +73,7 @@ public class MusicSelectView {
 				System.out.println(musicList.get(i).getSinger());
 				
 			}
+			
 		}
 		
 		Controllers.getMusicController().requestCallMusicSelectOneView(musicList);

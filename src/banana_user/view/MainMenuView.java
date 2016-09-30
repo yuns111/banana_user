@@ -26,11 +26,15 @@ public class MainMenuView {
 			Controllers.getMusicController().requestSelectAllMusic();
 
 			if(loginYN == false) {
+				
 				System.out.print("\n[1.로그인   2.회원가입  3.노래듣기  4.노래검색  0.프로그램 종료] : ");
 				menuTypeNumber = keyboard.nextInt();
+				
 			} else {
+				
 				System.out.print("\n[1.로그아웃   2.마이페이지  3.노래듣기  4.노래검색  5.감정선택  6.이용권구매  7.플레이리스트 0.프로그램 종료] :");
 				menuTypeNumber = keyboard.nextInt();
+				
 			}
 
 			switch(menuTypeNumber) {
@@ -42,7 +46,6 @@ public class MainMenuView {
 					Controllers.getLoginController().requestLogout();
 				}
 				break;
-
 			case 2:
 				if(loginYN == false) {
 					Controllers.getUserController().requestRegisterUser();
@@ -50,15 +53,12 @@ public class MainMenuView {
 					Controllers.getUserController().requestUserMypage();
 				}
 				break;
-
 			case 3:
 				Controllers.getMusicController().requestCallMusicSelectOneView(Controllers.getMusicController().requestSelectAllMusic());
 				break;
-
 			case 4:
 				Controllers.getMusicController().requestSearchMusic();
 				break;
-
 			case 5:
 				if(loginYN == false) {
 					System.out.println("메뉴를 다시 선택해 주세요.");
@@ -66,7 +66,6 @@ public class MainMenuView {
 					Controllers.getEmotionController().requestCallSelectOneEmotionView();
 				}
 				break;
-
 			case 6:
 				if(loginYN == false) {
 					System.out.println("메뉴를 다시 선택해 주세요.");
@@ -74,7 +73,6 @@ public class MainMenuView {
 					Controllers.getTicketController().requestTicketAllList();
 				}
 				break;
-
 			case 7:
 				if(loginYN == false) {
 					System.out.println("메뉴를 다시 선택해 주세요.");
@@ -82,14 +80,11 @@ public class MainMenuView {
 					Controllers.getPlayListController().goToPlayListView();
 				}
 				break;
-				
 			case 0:
 				Controllers.getProgramController().requestExitProgram();
 				break;
-				
 			default :
 				System.out.println("메뉴를 다시 선택해 주세요.");
-				
 			}
 			
 		}
