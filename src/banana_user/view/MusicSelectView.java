@@ -21,7 +21,7 @@ public class MusicSelectView {
 	public void musicSelectOneView(ArrayList<Music> searchMusicList) {
 		
 		System.out.print("음원번호로 선택해주세요(0:이전메뉴) : ");
-		int musicNumber = 0;
+		int musicNumber = -1;
 		
 		while(true){
 			try {
@@ -65,7 +65,7 @@ public class MusicSelectView {
 				if(title.length() >= 6) {
 					
 					title = title.substring(0, 5);
-					title = title + "..";
+					title = title + "...";
 					
 				} else {
 					
@@ -104,7 +104,7 @@ public class MusicSelectView {
 				if(title.length() >= 6) {
 					
 					title = title.substring(0, 5);
-					title = title + "..";
+					title = title + "...";
 					
 				} else {
 					

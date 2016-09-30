@@ -42,7 +42,7 @@ public class PlayListView {
 		while(true) {
 
 			System.out.print("[1.선택곡 재생 2.선택곡 삭제 3.모든곡 삭제 4.이전 화면] : ");
-			int selectPlayListMenu = 0;
+			int selectPlayListMenu = -1;
 
 			try {
 
@@ -52,7 +52,6 @@ public class PlayListView {
 			} catch (InputMismatchException e) {
 
 				keyboard = new Scanner(System.in);
-				System.out.print("잘못입력하셨습니다. 다시 입력해주세요 : ");
 
 			} 
 
@@ -86,7 +85,7 @@ public class PlayListView {
 
 		System.out.println("[곡 선택]");
 		System.out.print("곡번호를 입력하세요 : ");
-		int playMusicNumber = keyboard.nextInt();
+		int playMusicNumber = -1;
 
 		while(true){
 			try {
@@ -111,7 +110,7 @@ public class PlayListView {
 
 		System.out.println("[곡 선택]");
 		System.out.print("곡번호를 입력하세요 : ");
-		int deleteMusicOfListNumber = 0;
+		int deleteMusicOfListNumber = -1;
 		
 		while(true){
 			try {
