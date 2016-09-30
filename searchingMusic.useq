@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.10" icons="true">  
+  <object id="1" language="java" name="banana_user.view.MusicSearchView" project="banana_user" 
+    file="/banana_user/src/banana_user/view/MusicSearchView.java" binary="false" label="musicSearchView" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="225" y="0"/>    
+    <execution id="2">      
+      <position height="584" width="148" x="5" y="133"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="464" width="7" x="76" y="205"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="banana_user.controller.MusicController" project="banana_user" 
+    file="/banana_user/src/banana_user/controller/MusicController.java" binary="false" label="musicController" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="423" y="0"/>    
+    <execution id="4">      
+      <position height="536" width="137" x="157" y="157"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="416" width="7" x="222" y="229"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="261" width="7" x="222" y="336"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="155" width="7" x="228" y="418"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="banana_user.dao.MusicDao" project="banana_user" 
+    file="/banana_user/src/banana_user/dao/MusicDao.java" binary="false" label="musicDao" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="467" y="0"/>    
+    <execution id="10">      
+      <position height="24" width="104" x="298" y="181"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="24" width="104" x="298" y="360"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="banana_user.view.MusicSelectView" project="banana_user" 
+    file="/banana_user/src/banana_user/view/MusicSelectView.java" binary="false" label="musicSelectView" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="441" y="0"/>    
+    <execution id="13">      
+      <position height="368" width="143" x="406" y="253"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="banana_user.view.MusicPlayingView" project="banana_user" 
+    file="/banana_user/src/banana_user/view/MusicPlayingView.java" binary="false" label="musicPlayingView" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="694" y="0"/>    
+    <execution id="20">      
+      <position height="24" width="149" x="553" y="442"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="24" width="149" x="553" y="488"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="24" width="149" x="553" y="525"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="responseSearchMusic(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="requestCallMusicSelectOneView(java.util.ArrayList&lt;banana_user.domain.Music&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" operation="musicSelectAll():java.util.ArrayList&lt;Music&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="printSearchMusicList(java.util.ArrayList&lt;banana_user.domain.Music&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </message>  
+  <message id="12" operation="musicSelectOneView(java.util.ArrayList&lt;banana_user.domain.Music&gt;):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="15" 
+    operation="selectOneMusic(java.util.ArrayList&lt;banana_user.domain.Music&gt;,int):banana_user.domain.Music" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="requestPlayingMusic(banana_user.domain.Music):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="unLoginPlaying(banana_user.domain.Music):void" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="noTicketPlaying(banana_user.domain.Music):void" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="musicPlaying(banana_user.domain.Music):void" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="27" operation="requestMusicSelectOne(java.util.ArrayList&lt;banana_user.domain.Music&gt;,int):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>
+</sequence-diagram>
