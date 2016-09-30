@@ -34,6 +34,7 @@ public class LoginDao {
 			while(rs.next()) {
 				
 				userPassword =rs.getString(1);
+<<<<<<< HEAD
 				
 			}
 
@@ -44,6 +45,15 @@ public class LoginDao {
 				LoginRepository.getLogin().setLoginId(login.getLoginId());
 				LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
 				
+=======
+
+				if(userPassword.equals(login.getLoginPassword())) {
+					//맞으면 repository에 넣기
+					success = true;
+					LoginRepository.getLogin().setLoginId(login.getLoginId());
+					LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+				}
+>>>>>>> refs/remotes/origin/master
 			}
 
 		} catch(SQLException e) {
@@ -78,6 +88,7 @@ public class LoginDao {
 		return success;
 		
 	}
+<<<<<<< HEAD
 	
 	public boolean select() {
 		
@@ -85,12 +96,21 @@ public class LoginDao {
 		
 		if(loginRepository.getLogin().getLoginId() != null) {
 			
+=======
+
+
+	public boolean select(){
+
+		boolean success = false;
+
+		if(loginRepository.getLogin().getLoginId() != null){
+>>>>>>> refs/remotes/origin/master
 			success = true;
 			
 		}
-		
+
 		return success;
-		
+
 	}
 
 }

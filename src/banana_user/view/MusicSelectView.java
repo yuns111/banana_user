@@ -19,7 +19,7 @@ public class MusicSelectView {
 	
 	public void musicSelectOneView(ArrayList<Music> searchMusicList) {
 		
-		System.out.print("음원번호로 선택해주세요 : ");
+		System.out.print("음원번호로 선택해주세요(0:이전메뉴) : ");
 		int musicNumber = keyboard.nextInt();
 		
 		Controllers.getMusicController().requestMusicSelectOne(searchMusicList,musicNumber);
