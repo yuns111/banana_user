@@ -17,15 +17,13 @@ public class Controllers {
 		programController = new ProgramController();
 		userController = new UserController();
 		loginController = new LoginController();
-
 		emotionController = new EmotionController();
 		musicController = new MusicController();
 		ticketController = new TicketController();
 		menuController = new MenuController();
+		
 	}
 
-	
-	
 	public static PlayListController getPlayListController() {
 		return playListController;
 	}
@@ -39,20 +37,16 @@ public class Controllers {
 	}
 
 	public static LoginController getLoginController() {
-		
 		return loginController;
 	}
 
 	public static EmotionController getEmotionController() {
-		
 		return emotionController;
 	}
 
 	public static MusicController getMusicController() {
-		
 		return musicController;
 	}
-	
 	
 	public static TicketController getTicketController() {
 		return ticketController;

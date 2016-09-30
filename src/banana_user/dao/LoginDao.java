@@ -11,7 +11,9 @@ public class LoginDao {
 	LoginRepository loginRepository;
 
 	public LoginDao() {
+		
 		loginRepository = new LoginRepository();
+		
 	}
 
 	public boolean insert(Login login) {
@@ -21,7 +23,8 @@ public class LoginDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		try{
+		try {
+			
 			//아이디랑 비밀번호 체크
 			String sql = "select USERPASSWORD from banana_user where userid =?";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
@@ -29,7 +32,18 @@ public class LoginDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
+				
 				userPassword =rs.getString(1);
+				
+			}
+
+			if(userPassword.equals(login.getLoginPassword())) {
+				
+				//맞으면 repository에 넣기
+				success = true;
+				LoginRepository.getLogin().setLoginId(login.getLoginId());
+				LoginRepository.getLogin().setLoginPassword(login.getLoginPassword());
+				
 
 				if(userPassword.equals(login.getLoginPassword())) {
 					//맞으면 repository에 넣기
@@ -46,37 +60,44 @@ public class LoginDao {
 		} finally {
 
 			try {
+				
 				rs.close(); 
 				pstmt.close();
+				
 			} catch (SQLException e) {
+				
 				e.printStackTrace();
+				
 			}
+			
 		}
 
 		return success;
+		
 	}
 
-	public boolean delete(){
+	public boolean delete() {
 
 		boolean success = false;
 		LoginRepository.getLogin().setLoginId(null);
 		LoginRepository.getLogin().setLoginPassword(null);
 		success = true;
 		return success;
+		
 	}
-
-
-	public boolean select(){
-
+	
+	public boolean select() {
+		
 		boolean success = false;
+		
+		if(loginRepository.getLogin().getLoginId() != null) {
 
-		if(loginRepository.getLogin().getLoginId() != null){
 			success = true;
+			
 		}
 
 		return success;
 
 	}
-
 
 }

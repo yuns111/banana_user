@@ -15,7 +15,8 @@ public class EmotionController {
 		emotionDao = new EmotionDao();
 
 	}
-	public void requestCallSelectOneEmotionView(){
+	
+	public void requestCallSelectOneEmotionView() {
 		
 		//감정목록 가져오기(dao)
 		ArrayList<Emotion> emotionList = emotionDao.selectAllEmotion();

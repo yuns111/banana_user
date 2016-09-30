@@ -32,34 +32,43 @@ public class TicketSelectListView {
 		} else {
 
 			for(int i = 0 ; i < tickets.size() ; i++) {
+				
 				System.out.print(tickets.get(i).getTicketNumber() + "\t");
 				System.out.print(tickets.get(i).getTicketName() + "\t");
 				System.out.print(tickets.get(i).getPrice() + "\t");
 				System.out.println(tickets.get(i).getExpriationDate());
+				
 			}
+			
 		}
 
-		while(exit){
-			try{		
+		while(exit) {
+			
+			try {
+				
 				//구매할 상품 선택받는 메뉴
 				System.out.print("\n구매할 이용권번호 입력 : ");
-				ticketBuyNum=keyboard.nextInt();
+				ticketBuyNum = keyboard.nextInt();
 				exit = false;
 
-			} catch(InputMismatchException e){
+			} catch(InputMismatchException e) {
+				
 				System.out.println("숫자를 입력하세요.");
 				keyboard = new Scanner(System.in);
+				
 			}
+			
 		}
 
 		System.out.print("구매 하시겠습니까?(y or anypresskey) : ");
 		char select=keyboard.next().charAt(0);
 
-		if(select=='y'||select=='Y'){
+		if(select=='y'||select=='Y') {
+			
 			Controllers.getTicketController().requestTicketBuy(ticketBuyNum);
+			
 		}
 
-		//메뉴로 돌아가기 
 	}
 
 	public void printPurchaseTicketAllList(ArrayList<Ticket> tickets) {
@@ -74,12 +83,16 @@ public class TicketSelectListView {
 		} else {
 
 			for(int i = 0 ; i < tickets.size() ; i++) {
+				
 				System.out.print(tickets.get(i).getTicketName() + "\t");
 				System.out.print(tickets.get(i).getPrice() + "\t");
 				System.out.print(tickets.get(i).getStartDate() + "\t");
 				System.out.println(tickets.get(i).getEndDate());
+				
 			}
+			
 		}
+		
 	}
 
 }

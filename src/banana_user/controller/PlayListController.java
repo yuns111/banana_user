@@ -15,9 +15,10 @@ public class PlayListController {
 	public PlayListController() {
 		
 		playListDao = new PlayListDao();
+		
 	}
 
-	public void goToPlayListView(){
+	public void goToPlayListView() {
 		
 		PlayListView playListView = new PlayListView();
 		playListView.playListView();
@@ -25,7 +26,7 @@ public class PlayListController {
 	}
 	
 	//플레이리스트메뉴뷰로 가는 메서드
-	public void goToPlayListMenuView(ArrayList<Music> searchMusicList){
+	public void goToPlayListMenuView(ArrayList<Music> searchMusicList) {
 		
 		PlayListView playListView = new PlayListView();
 		playListView.playListMenuView(searchMusicList);
@@ -33,7 +34,7 @@ public class PlayListController {
 	}
 	
 	//플레이리스트의 한곡 재생뷰로 가는 메서드
-	public void goToSelectPlayMusicView(ArrayList<Music> searchMusicList){
+	public void goToSelectPlayMusicView(ArrayList<Music> searchMusicList) {
 
 		PlayListView playListView = new PlayListView();
 		playListView.playMusicView(searchMusicList);
@@ -41,7 +42,7 @@ public class PlayListController {
 	}
 
 	//플레이리스트의 한곡 선택 삭제뷰로 가는 메서드
-	public void goToDeleteMusicView(){
+	public void goToDeleteMusicView() {
 
 		PlayListView playListView = new PlayListView();
 		playListView.delecteMusicOfListView();
@@ -49,7 +50,7 @@ public class PlayListController {
 	}
 
 	//플레이리스트의 전체 삭제뷰로 가는 메서드
-	public void goToDeletePlayListView(){
+	public void goToDeletePlayListView() {
 
 		PlayListView playListView = new PlayListView();
 		playListView.deletePlayListView();
@@ -57,16 +58,18 @@ public class PlayListController {
 	}
 
 	//플레이리스트를 보여주는 메서드
-	public ArrayList<Music> requestPlayList(){
+	public ArrayList<Music> requestPlayList() {
 		
 		String loginID = LoginRepository.getLogin().getLoginId();
 		ArrayList<Music> musicInfo = playListDao.playList(loginID);
 		
 		return musicInfo;
+		
 	}
 
 	//플레이리스트의 한 곡을 지우는 메서드
-	public boolean requestDeleteMusicOfList(int deleteMusicOfListNumber){
+	public boolean requestDeleteMusicOfList(int deleteMusicOfListNumber) {
+		
 		boolean success = false;
 		
 		//dao로 번호 전달
@@ -74,14 +77,17 @@ public class PlayListController {
 		success = playListDao.deleteMusicOfList(deleteMusicOfListNumber, loginID);
 		
 		return success;
+		
 	}
 
 	//플레이리스트의 전체곡을 지우는 메서드
-	public boolean requestDeletePlayList(){
+	public boolean requestDeletePlayList() {
+		
 		String loginID = LoginRepository.getLogin().getLoginId();
 		boolean success = playListDao.deletePlayList(loginID);
 		
 		return success;
+		
 	}
 
 }

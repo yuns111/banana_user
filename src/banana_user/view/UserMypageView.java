@@ -41,25 +41,34 @@ public class UserMypageView {
 			int selectedMenu = keyboard.nextInt();
 
 			switch (selectedMenu) {
+			
 			case 1:
 				Controllers.getUserController().requestUpdateUser();
 				break;
+				
 			case 2:
 				Controllers.getTicketController().requestPurchaseTicketAll();
 				break;
+				
 			case 3:
 				Controllers.getUserController().requestDeleteUser();
 				break;
+				
 			case 9:
 				Controllers.getMenuController().requestShowMenu();
 				break;
+				
 			case 0:
 				Controllers.getProgramController().requestExitProgram();
 				break;
+				
 			default:
 				System.out.println("메뉴를 다시 선택해 주세요.");
+				
 			}
+			
 		}
 
 	}
+	
 }

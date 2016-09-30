@@ -12,4 +12,5 @@ public class LoginRepository {
 	public static Login getLogin() {
 		return login;
 	}
+	
 }

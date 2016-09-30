@@ -14,9 +14,10 @@ public class MusicSelectView {
 	public MusicSelectView() {
 
 		keyboard = new Scanner(System.in);
+		
 	}
 	
-	public void musicSelectOneView(ArrayList<Music> searchMusicList){
+	public void musicSelectOneView(ArrayList<Music> searchMusicList) {
 		
 		System.out.print("음원번호로 선택해주세요(0:이전메뉴) : ");
 		int musicNumber = keyboard.nextInt();
@@ -31,17 +32,38 @@ public class MusicSelectView {
 		System.out.println("\n[음원 목록 보기]");
 
 		if(musicList.size() == 0) {
+			
 			new AlertView().alert("음원이 없습니다.");
+			
 		} else {
-			System.out.println("순위\t음원번호\t노래제목\t\t가수");	
+			
+			System.out.println("순위\t음원번호\t제목\t\t가수");	
 			
 			for(int i = 0; i < musicList.size(); i++) {
+				
 				System.out.print(i+1+"\t");
 				System.out.print(musicList.get(i).getMusicNumber() + "\t");
-				System.out.print(musicList.get(i).getTitle() + "\t\t");
+				
+				String title = musicList.get(i).getTitle();
+				
+				if(title.length() >= 6) {
+					
+					title = title.substring(0, 5);
+					title = title + "..";
+					
+				} else {
+					
+					title = title + "\t";
+					
+				}
+				
+				System.out.print(title + "\t");
 				System.out.println(musicList.get(i).getSinger());
+				
 			}
+			
 		}
+		
 	}
 	
 	//노래 재생전 나오는 음원 목록
@@ -50,16 +72,39 @@ public class MusicSelectView {
 		System.out.println("\n[음원 목록 보기]");
 
 		if(musicList.size() == 0) {
+			
 			new AlertView().alert("음원이 없습니다.");
+			
 		} else {
-			System.out.println("순위\t음원번호\t노래제목\t\t가수");	
+			
+			System.out.println("순위\t음원번호\t제목\t\t가수");	
+			
 			for(int i = 0; i < musicList.size(); i++) {
+				
 				System.out.print(i+1+"\t");
 				System.out.print(musicList.get(i).getMusicNumber() + "\t");
-				System.out.print(musicList.get(i).getTitle() + "\t\t");
+				String title = musicList.get(i).getTitle();
+				
+				if(title.length() >= 6) {
+					
+					title = title.substring(0, 5);
+					title = title + "..";
+					
+				} else {
+					
+					title = title + "\t";
+					
+				}
+				
+				System.out.print(title + "\t");
 				System.out.println(musicList.get(i).getSinger());
+				
 			}
+			
 		}
+		
 		Controllers.getMusicController().requestCallMusicSelectOneView(musicList);
+		
 	}
+	
 }
