@@ -9,12 +9,11 @@ public class Ticket {
 	private String startDate;
 	private String endDate;
 
-	public Ticket(){
+	public Ticket() {
 
 	}
 	
 	public Ticket(String ticketName, int price, String startDate, String endDate) {
-		super();
 		this.ticketName = ticketName;
 		this.price = price;
 		this.startDate = startDate;

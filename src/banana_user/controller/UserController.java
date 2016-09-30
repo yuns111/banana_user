@@ -33,9 +33,13 @@ public class UserController {
 		boolean success = userDao.insertRegisterUser(user);
 
 		if(success) {
+			
 			alertView.alert("회원가입을 축하합니다!");
+			
 		} else {
+			
 			alertView.alert("중복된 id가 존재합니다.");
+			
 		}
 		
 		Controllers.getMenuController().requestShowMenu();
@@ -58,9 +62,13 @@ public class UserController {
 		boolean success = userDao.updateUserInfo(user);
 
 		if(success) {
+			
 			alertView.alert("회원정보 수정 성공");
+			
 		} else {
+			
 			alertView.alert("회원정보 수정 실패");
+			
 		}
 
 	}
@@ -76,9 +84,13 @@ public class UserController {
 		//Controllers.getLoginController().requestLogout();
 
 		if(success) {
+			
 			alertView.alert("회원삭제 성공");
+			
 		} else {
+			
 			alertView.alert("회원삭제 실패");
+			
 		}
 
 	}

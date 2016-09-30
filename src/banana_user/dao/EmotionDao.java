@@ -14,10 +14,9 @@ public class EmotionDao {
 		
 	}
 	
-	public ArrayList<Emotion> selectAllEmotion(){
+	public ArrayList<Emotion> selectAllEmotion() {
 		
 		ArrayList<Emotion> emotionList = new ArrayList<Emotion>();
-		
 		Statement stmt = null;
 		ResultSet rs = null;
 		
@@ -28,7 +27,7 @@ public class EmotionDao {
 			stmt = Controllers.getProgramController().getConnection().createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			while(rs.next()){
+			while(rs.next()) {
 				
 				Emotion emotion = new Emotion();
 				
@@ -36,22 +35,32 @@ public class EmotionDao {
 				emotion.setEmotionName(rs.getString(2));
 				
 				emotionList.add(emotion);
+				
 			}
 			
 		} catch (SQLException e) {
+			
 			System.out.println("감정리스트 호출시 오류가 있습니다.");
 			e.printStackTrace();
+			
 		} finally {
+			
 			if(stmt != null) {
+				
 				try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 			if(rs != null) {
+				
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+				
 			}
+			
 		}
 		
 		return emotionList;
+		
 	}
-	
 
 }

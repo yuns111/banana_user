@@ -29,7 +29,7 @@ public class UserUpdateView {
 		userPassword = keyboard.next();
 		System.out.print("변경할 이름 : ");
 		userName = keyboard.next();
-		System.out.print("변경할 성별 : ");
+		System.out.print("변경할 성별(M/F) : ");
 		userGender = keyboard.next();
 		System.out.print("변경할 휴대전화 번호 : ");
 		userPhoneNumber = keyboard.next();
@@ -37,6 +37,7 @@ public class UserUpdateView {
 		user = new User(userPassword, userName, userGender, userPhoneNumber);
 	
 		Controllers.getUserController().responseUpdateUser(user);
+		
 	}
 
 }

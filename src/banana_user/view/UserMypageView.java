@@ -1,5 +1,6 @@
 package banana_user.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import banana_user.controller.Controllers;
@@ -26,7 +27,7 @@ public class UserMypageView {
 		System.out.print(user.getUserName() + "\t");
 		System.out.print(user.getUserPhoneNumber() + "\t\t");
 		System.out.println(user.getTicketName());
-		
+
 
 		Controllers.getUserController().requestUserMypageSub();
 
@@ -40,26 +41,46 @@ public class UserMypageView {
 
 			int selectedMenu = keyboard.nextInt();
 
+			try {
+
+				selectedMenu = keyboard.nextInt();
+				break;
+
+			} catch (InputMismatchException e) {
+
+				keyboard = new Scanner(System.in);
+
+			} 
+
 			switch (selectedMenu) {
+
 			case 1:
 				Controllers.getUserController().requestUpdateUser();
 				break;
+
 			case 2:
 				Controllers.getTicketController().requestPurchaseTicketAll();
 				break;
+
 			case 3:
 				Controllers.getUserController().requestDeleteUser();
 				break;
+
 			case 9:
 				Controllers.getMenuController().requestShowMenu();
 				break;
+
 			case 0:
 				Controllers.getProgramController().requestExitProgram();
 				break;
+
 			default:
 				System.out.println("메뉴를 다시 선택해 주세요.");
+
 			}
+
 		}
 
 	}
+
 }

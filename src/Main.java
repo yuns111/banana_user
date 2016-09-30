@@ -6,6 +6,7 @@ public class Main {
 		System.out.println("우하하\tt랄라라");
 		new Controllers();
 		Controllers.getMenuController().requestShowMenu();
+		
 	}
 
 
