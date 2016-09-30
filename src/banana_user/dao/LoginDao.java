@@ -8,11 +8,10 @@ import banana_user.repository.LoginRepository;
 
 public class LoginDao {
 
-	LoginRepository loginRepository;
 
 	public LoginDao() {
 		
-		loginRepository = new LoginRepository();
+		new LoginRepository();
 		
 	}
 
@@ -90,7 +89,7 @@ public class LoginDao {
 		
 		boolean success = false;
 		
-		if(loginRepository.getLogin().getLoginId() != null) {
+		if(LoginRepository.getLogin().getLoginId() != null) {
 
 			success = true;
 			
