@@ -37,13 +37,27 @@ public class MusicSelectView {
 			
 		} else {
 			
-			System.out.println("순위\t음원번호\t노래제목\t\t가수");	
+			System.out.println("순위\t음원번호\t제목\t\t가수");	
 			
 			for(int i = 0; i < musicList.size(); i++) {
 				
 				System.out.print(i+1+"\t");
 				System.out.print(musicList.get(i).getMusicNumber() + "\t");
-				System.out.print(musicList.get(i).getTitle() + "\t\t");
+				
+				String title = musicList.get(i).getTitle();
+				
+				if(title.length() >= 6) {
+					
+					title = title.substring(0, 5);
+					title = title + "..";
+					
+				} else {
+					
+					title = title + "\t";
+					
+				}
+				
+				System.out.print(title + "\t");
 				System.out.println(musicList.get(i).getSinger());
 				
 			}
@@ -63,13 +77,26 @@ public class MusicSelectView {
 			
 		} else {
 			
-			System.out.println("순위\t음원번호\t노래제목\t\t가수");	
+			System.out.println("순위\t음원번호\t제목\t\t가수");	
 			
 			for(int i = 0; i < musicList.size(); i++) {
 				
 				System.out.print(i+1+"\t");
 				System.out.print(musicList.get(i).getMusicNumber() + "\t");
-				System.out.print(musicList.get(i).getTitle() + "\t\t");
+				String title = musicList.get(i).getTitle();
+				
+				if(title.length() >= 6) {
+					
+					title = title.substring(0, 5);
+					title = title + "..";
+					
+				} else {
+					
+					title = title + "\t";
+					
+				}
+				
+				System.out.print(title + "\t");
 				System.out.println(musicList.get(i).getSinger());
 				
 			}

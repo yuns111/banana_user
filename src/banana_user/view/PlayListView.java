@@ -111,7 +111,7 @@ public class PlayListView {
 	//플레이리스트 전체 삭제
 	public void deletePlayListView() {
 		
-		System.out.println("정말 플레이리스트내 모든 곡을 삭제하시겠습니까?(y/press any key)");
+		System.out.print("정말 플레이리스트내 모든 곡을 삭제하시겠습니까?(y/press any key) : ");
 		char question = keyboard.next().charAt(0);
 
 		if(question == 'y') {

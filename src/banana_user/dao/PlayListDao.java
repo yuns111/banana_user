@@ -73,7 +73,7 @@ public class PlayListDao {
 
 		try {
 			
-			String sql = "delete playlist p where p.musicnumber= ? and p.usernumber in (select u.usernumber from banana_user u where u.userid = ?)";
+			String sql = "delete from playlist p where p.musicnumber = ? and p.usernumber = (select u.usernumber from banana_user u where u.userid = ?)";
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, deleteMusicOfListNumber);
 			pstmt.setString(2, loginID);
