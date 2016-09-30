@@ -11,29 +11,36 @@ public class TicketController {
 
 	private TicketDao ticketDao;
 
-	public TicketController(){
+	public TicketController() {
+		
 		ticketDao=new TicketDao();
+		
 	}
 
 	//티켓 리스트 보기
-	public void requestTicketAllList(){
+	public void requestTicketAllList() {
 		
-		ArrayList<Ticket> ticket=ticketDao.selectList();
+		ArrayList<Ticket> ticket = ticketDao.selectList();
 
-		TicketSelectListView ticketAllListView =new TicketSelectListView();
+		TicketSelectListView ticketAllListView = new TicketSelectListView();
 		ticketAllListView.printTicketAllList(ticket);
+		
 	}
 
 	//티켓 구매 하기
-	public void requestTicketBuy(int ticketBuyNum){
+	public void requestTicketBuy(int ticketBuyNum) {
 
 		boolean success = ticketDao.buyOneTicket(ticketBuyNum);
 		AlertView alertView = new AlertView();
 
-		if(success){
+		if(success) {
+			
 			alertView.alert("결제 완료");
-		} else{
+			
+		} else {
+			
 			alertView.alert("이미 구매한 이용권이 있습니다");
+			
 		}
 		
 		Controllers.getMenuController().requestShowMenu();
@@ -41,7 +48,7 @@ public class TicketController {
 	}
 	
 	//구매 티켓 이력 보기
-	public void requestPurchaseTicketAll(){
+	public void requestPurchaseTicketAll() {
 		
 		ArrayList<Ticket> tickets = ticketDao.purchaseTicketAll();
 		

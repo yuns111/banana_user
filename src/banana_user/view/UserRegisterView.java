@@ -33,7 +33,7 @@ public class UserRegisterView {
 		userPassword = keyboard.next();
 		System.out.print("회원 이름 : ");
 		userName = keyboard.next();
-		System.out.print("회원 성별 : ");
+		System.out.print("회원 성별(M/F) : ");
 		userGender = keyboard.next();
 		System.out.print("휴대전화 번호 : ");
 		userPhoneNumber = keyboard.next();
