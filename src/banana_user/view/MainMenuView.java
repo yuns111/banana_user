@@ -23,7 +23,6 @@ public class MainMenuView {
 
 			//로그인체크여부
 			boolean loginYN =Controllers.getLoginController().requestLoginYN();
-
 			Controllers.getMusicController().requestSelectAllMusic();
 
 			if(loginYN == false) {
@@ -45,7 +44,7 @@ public class MainMenuView {
 			} else {
 
 				System.out.print("\n[1.로그아웃   2.마이페이지  3.노래듣기  4.노래검색  5.감정선택  6.이용권구매  7.플레이리스트 0.프로그램 종료] : ");
-				
+
 				try {
 
 					menuTypeNumber = keyboard.nextInt();

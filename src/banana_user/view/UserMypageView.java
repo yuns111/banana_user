@@ -25,7 +25,7 @@ public class UserMypageView {
 		System.out.print(user.getUserNumber() + "\t");
 		System.out.print(user.getUserId() + "\t");
 		System.out.print(user.getUserName() + "\t");
-		System.out.print(user.getUserPhoneNumber() + "\t\t");
+		System.out.print(user.getUserPhoneNumber() + "\t");
 		System.out.println(user.getTicketName());
 
 
@@ -34,8 +34,10 @@ public class UserMypageView {
 	}
 
 	public void userMypageSub() {
+		
+		boolean exit = true;
 
-		while(true) {
+		while(exit) {
 
 			System.out.print("\n[1.회원정보수정  2.이용권 구매정보  3.회원탈퇴  9.메인메뉴  0.프로그램 종료] : ");
 
@@ -44,7 +46,6 @@ public class UserMypageView {
 			try {
 
 				selectedMenu = keyboard.nextInt();
-				break;
 
 			} catch (InputMismatchException e) {
 
@@ -64,6 +65,7 @@ public class UserMypageView {
 
 			case 3:
 				Controllers.getUserController().requestDeleteUser();
+				exit = false;
 				break;
 
 			case 9:

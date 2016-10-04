@@ -33,15 +33,15 @@ public class UserController {
 		boolean success = userDao.insertRegisterUser(user);
 
 		if(success) {
-			
+
 			alertView.alert("회원가입을 축하합니다!");
-			
+
 		} else {
-			
+
 			alertView.alert("중복된 id가 존재합니다.");
-			
+
 		}
-		
+
 		Controllers.getMenuController().requestShowMenu();
 
 	}
@@ -62,13 +62,13 @@ public class UserController {
 		boolean success = userDao.updateUserInfo(user);
 
 		if(success) {
-			
+
 			alertView.alert("회원정보 수정 성공");
-			
+
 		} else {
-			
+
 			alertView.alert("회원정보 수정 실패");
-			
+
 		}
 
 	}
@@ -77,40 +77,40 @@ public class UserController {
 	public void requestDeleteUser() {
 
 		//Dao 통해 삭제
-		AlertView alertView = new AlertView();
 		boolean success = userDao.deleteUser();
 
 		//회원 탈퇴 후 자동 로그아웃
 		//Controllers.getLoginController().requestLogout();
 
+		AlertView alertView = new AlertView();
 		if(success) {
-			
+
 			alertView.alert("회원삭제 성공");
-			
+
 		} else {
-			
+
 			alertView.alert("회원삭제 실패");
-			
+
 		}
 
 	}
 
 	//회원정보 보기 요청을 처리하는 메서드
 	public void requestUserMypage() {
-	
+
 		User user = userDao.mypageUserInfo();
-		
+
 		UserMypageView userMypageView = new UserMypageView();
 		userMypageView.userMypage(user);
-		
+
 	}
-	
+
 	//마이페이지 서브메뉴 요청을 처리하는 메서드
 	public void requestUserMypageSub() {
-		
+
 		UserMypageView userMypageView = new UserMypageView();
 		userMypageView.userMypageSub();
-		
+
 	}
 
 }
