@@ -22,12 +22,25 @@ public class PlayListView {
 
 		System.out.println("[플레이리스트]");
 		ArrayList<Music> musicInfo = Controllers.getPlayListController().requestPlayList();
-		System.out.println("음원번호\t노래제목\t가수");
+		System.out.println("음원번호\t노래제목\t\t가수");
 
 		for(int i = 0; i < musicInfo.size(); i++) {
 
 			System.out.print(musicInfo.get(i).getMusicNumber()+"\t");
-			System.out.print(musicInfo.get(i).getTitle()+"\t");
+			String title = musicInfo.get(i).getTitle();
+			
+			if(title.length() >= 6) {
+				
+				title = title.substring(0, 5);
+				title = title + "...";
+				
+			} else {
+				
+				title = title + "\t";
+				
+			}
+			
+			System.out.print(title + "\t");
 			System.out.println(musicInfo.get(i).getSinger()+"\t");
 
 		}

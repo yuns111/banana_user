@@ -44,7 +44,20 @@ public class MusicSearchView {
 			for(int i = 0; i < searchMusicList.size(); i++) {
 				
 				System.out.print(searchMusicList.get(i).getMusicNumber() + "\t");
-				System.out.print(searchMusicList.get(i).getTitle() + "\t\t");
+				String title = searchMusicList.get(i).getTitle();
+				
+				if(title.length() >= 6) {
+					
+					title = title.substring(0, 5);
+					title = title + "...";
+					
+				} else {
+					
+					title = title + "\t";
+					
+				}
+				
+				System.out.print(title + "\t");
 				System.out.println(searchMusicList.get(i).getSinger());
 				
 			}
