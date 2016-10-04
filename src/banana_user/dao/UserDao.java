@@ -139,6 +139,8 @@ public class UserDao {
 			pstmt = Controllers.getProgramController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, LoginRepository.getLogin().getLoginId());
 			result = pstmt.executeUpdate();
+			
+			System.out.println("~~~");
 
 			if(result != 0) {
 				success = true;

@@ -92,6 +92,8 @@ public class UserController {
 			alertView.alert("회원삭제 실패");
 
 		}
+		
+		Controllers.getMenuController().requestShowMenu();
 
 	}
 
